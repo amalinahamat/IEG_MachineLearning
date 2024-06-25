@@ -86,6 +86,7 @@ art_friend.remove("Jen")
 
 print(art_friend)
 '''
+'''
 # 5. advanced set
 
 
@@ -97,4 +98,45 @@ science_but_nor_art = science_friend.difference(art_friend)
 
 print(art_but_not_science)
 print(science_but_nor_art)
+
+not_in_both = art_friend.symmetric_difference(science_friend)
+print(not_in_both)
+
+art_and_science = art_friend.intersection(science_friend)
+print(art_and_science)
+
+all_friends = art_friend.union(science_friend)
+print(all_friends)
+'''
+
+'''
+# 6. PYTHON DICT
+
+#key-value
+
+friend_ages = {"Rolf":24, "Adam":30, "Anne":27}
+print(friend_ages["Rolf"])
+
+friend_ages["Bob"] = 20
+friend_ages["Rolf"] = 40
+
+print(friend_ages)
+
+friends = (
+    {"name": "Rolf Smith", "age": 24},
+    {"name": "Adam Wool", "age": 30},
+    {"name": "Anne an", "age": 27},
+
+)
+
+
+print(friends[0]["name"])
+print(friends[1]["name"])
+print(friends[2]["name"])
+
+friends = [("Rolf",24),("Adam",30),("Anne",27)]
+friend_ages = dict(friends)
+print(friend_ages)
+
+'''
 
