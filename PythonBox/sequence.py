@@ -139,4 +139,112 @@ friend_ages = dict(friends)
 print(friend_ages)
 
 '''
+'''
+# iexplore
+print({1,2,3,4,5}-{3,4}^{5,6,7})
+
+a = {1,2,3}
+b = {1,2,3,4}
+c = a.issuperset(b)
+print(c)
+
+print({'b','a','r'} & set('qux'))
+
+
+s = set(['a', 'b', 'c'])
+print(s)
+s = {('a', 'b', 'c')}
+print(s)
+#s = set('a', 'b', 'c')
+print(s)
+s = set('abc')
+print(s)
+
+s = {100, 200, 300}
+
+s | set([300, 400, 500])
+print(s)
+
+s.union(set([300, 400, 500]))
+print(s)
+
+s.union([300, 400, 500])
+print(s)
+
+#s | [300, 400, 500]
+print(s)
+
+# i analyse
+
+d = {"john":40, "peter":45}
+print("john" in d)
+
+set1 = {10, 20, 30, 40, 50}
+set2 = {60, 70, 10, 30, 40, 80, 20, 50}
+print(set1.issubset(set2))
+print(set2.issuperset(set1))
+
+x = {1, 2, 3}
+y = {1, 2}
+#print(y.ispropersubset(x))
+
+
+print(a & b <= a and a & b <= b )
+
+a = (1,2,3)
+b = ("A","B","C")
+c = zip(a,b) #returns Zip Object
+print(list(c))
+
+s ={"foo", "bar", "baz", "qux"}
+s.discard("bar")
+print(s)
+s &={"foo", "baz", "qux"}
+print(s)
+s -= {"bar"}
+print(s)
+#del s["bar"]
+print(s)
+
+a = (1,2,3,4)
+print(sum(a,3))
+
+a = (0,1,2,3,4)
+b = slice(0,2)
+print(a[b])
+
+a = (1,2,(4,5))
+b = (1,2,(3,4))
+print(a<b)
+'''
+# i design
+# 1
+name = str(input())
+n = int(input())
+
+
+if 0 < n <= len(name):
+    listword = list(name)
+    listword.pop(n-1)
+    #print(listword)
+    latestname = ""
+    for char in listword:
+        latestname += char
+    print(latestname)
+else:
+    print()
+
+# 2
+
+word = input()
+
+word == word[::-1]
+if len(word) > 1:
+    word = word[0].upper() + word[1:-1] + word[-1].upper()
+else:
+    word = word.upper()
+
+print(word)
+
+
 
