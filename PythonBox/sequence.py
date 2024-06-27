@@ -245,6 +245,3 @@ else:
     word = word.upper()
 
 print(word)
-
-
-

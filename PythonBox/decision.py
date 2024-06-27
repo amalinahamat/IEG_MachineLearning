@@ -170,9 +170,11 @@ else:
     print("5")
 
     '''
-
+def change(a):
+    b=[x*x for x in a]
+    print(b)
 # iAsses
-
+'''
 card_ones = input()
 card_twos = input()
 card_threes = input()
@@ -187,3 +189,5 @@ elif card_one[0] == card_two[0] == card_three[0] or card_one[1] == card_two[1] =
     print("Bonanza")
 else:
     print("No Bonanza")
+
+'''
