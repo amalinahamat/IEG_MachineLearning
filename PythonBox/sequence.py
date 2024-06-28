@@ -217,7 +217,9 @@ a = (1,2,(4,5))
 b = (1,2,(3,4))
 print(a<b)
 '''
+
 # i design
+'''
 # 1
 name = str(input())
 n = int(input())
@@ -233,15 +235,55 @@ if 0 < n <= len(name):
     print(latestname)
 else:
     print()
-
+'''
+'''
 # 2
 
 word = input()
 
-word == word[::-1]
-if len(word) > 1:
-    word = word[0].upper() + word[1:-1] + word[-1].upper()
-else:
-    word = word.upper()
 
-print(word)
+reverse_word = word[::-1]
+if word == reverse_word:
+    print(word)
+else:
+    palindrome = ""
+    if len(word) > 1:
+        for i in range(len(word)):
+            if word[i] != word[-i]:
+                word[-i] == word[i] 
+            else:
+                palindrome = palindrome + word[i]
+    else:
+        palindrome = word.upper()
+        
+    print(palindrome)
+
+'''
+'''
+# 3
+
+number = int(input())
+
+for num in range(4):
+    right = "/" * number
+    left = "\\" * number
+    print(right,left,right,left, sep="")
+
+'''
+
+# 4 
+
+first_string = input("Enter the first string:\n")
+second_string = input("Enter the second string:\n")
+
+list_first_string = list(first_string)
+list_second_string = list(second_string)
+
+#print(list_first_string)
+#print(list_second_string)
+
+if first_string[0] == second_string[0]:
+    print(first_string, second_string)
+else:
+    print("Invalid Input")
+

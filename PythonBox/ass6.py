@@ -1,4 +1,4 @@
-'''
+
 # 1 : Write a python function that takes a number as 
 # parameter and prints the multiplication table of 
 # that number
@@ -237,7 +237,7 @@ def Pascal_Triangle(numbers):
 numbers = int(input("Enter an integer of a number: "))
 Pascal_Triangle(numbers)
 
-'''
+
 
 # 10
 # Write a simple python function that accepts a hyphen-separated sequence of words 
