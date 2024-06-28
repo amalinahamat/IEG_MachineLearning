@@ -1,3 +1,4 @@
+'''
 # 1 : Write a python function that takes a number as 
 # parameter and prints the multiplication table of 
 # that number
@@ -168,13 +169,51 @@ def amicableNumbers(lower,upper):
                 amicable_pairs.append((num,sum))
                 print(f"Amicable pair: {num} and {sum}")
                 print(f"Sum of proper divisors of {num} : {divisor} = {sum}")
-                print(f"Sum of proper divisors of {sum} : {next_divisor} = {next_sum}")    
+                print(f"Sum of proper divisors of {sum} : {next_divisor} = {next_sum}")  
+                print()  
     return amicable_pairs
 
 lower = int(input("Enter a lower integer number: "))
 upper = int(input("Enter a hupper integer number: "))
 
 amicable_pairs = amicableNumbers(lower,upper)
+'''
+# 8
+
+# Write a python function that takes variable length parameters and returns maximum
+# and minimum number in the parameter numbers.
+# For example if we call the function: maximumMinimum(10, 20, 30, 40, 50)
+# The function must return: [10, 50]
+
+def maximun_minimum(numbers):
+
+    listnumbers = list(map(int,numbers.split(",")))
+
+    print(len(listnumbers)) 
+
+    maximun = max(listnumbers)
+    minimum = min(listnumbers)
+
+    listmaxmin = [minimum,maximun]
+
+    print(f"minimum and maximum = {listmaxmin}")
+
+
+    return listmaxmin
+
+
+numbers = (input("Enter a set of number separated by comma: "))
+print((numbers))
+print(len(numbers))
+
+maximun_minimum(numbers)
+
+# 9 
+# Write a simple Python function that takes a number(n) as a parameter. 
+# Then the function prints out the first n rows of Pascal's triangle. 
+# Note : Pascal's triangle is an arithmetic and geometric figure first 
+# imagined by Blaise Pascal.
+
 
 
 
