@@ -270,7 +270,7 @@ for num in range(4):
     print(right,left,right,left, sep="")
 
 '''
-
+'''
 # 4 
 
 first_string = input("Enter the first string:\n")
@@ -286,4 +286,29 @@ if first_string[0] == second_string[0]:
     print(first_string, second_string)
 else:
     print("Invalid Input")
+'''
+'''
+# 5
 
+school_number = int(input())
+
+students_number = []
+
+list_student_number = []
+for student in range(school_number):
+    students_number = int(input())
+    list_student_number.append(students_number)
+
+book_price = int(input())
+
+total_book = 0
+for list_student in list_student_number:
+    total_book = total_book +  list_student
+
+total_cost = total_book * book_price
+
+print(f"Total number of books required : {total_book}")
+print(f"Total cost: {total_cost}")
+'''
+
+# 6
