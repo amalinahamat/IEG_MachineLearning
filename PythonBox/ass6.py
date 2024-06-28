@@ -207,7 +207,7 @@ print((numbers))
 print(len(numbers))
 
 maximun_minimum(numbers)
-'''
+
 # 9 
 # Write a simple Python function that takes a number(n) as a parameter. 
 # Then the function prints out the first n rows of Pascal's triangle. 
@@ -237,8 +237,32 @@ def Pascal_Triangle(numbers):
 numbers = int(input("Enter an integer of a number: "))
 Pascal_Triangle(numbers)
 
+'''
 
+# 10
+# Write a simple python function that accepts a hyphen-separated sequence of words 
+# as parameter and returns the words in a hyphen-separated sequence after sorting 
+# them alphabetically.
+# Sample Items : green-red-yellow-black-white
+# Expected Result : black-green-red-white-yellow
 
+def sort_alphabet(words):
+    listword = list(map(str,words.split("-")))
+    listword.sort()
+
+    sort_word = ""
+    for word in range(len(listword)):
+        sort_word = sort_word + listword[word]
+        if word != len(listword) - 1:
+            sort_word = sort_word + "-"
+    
+    print(sort_word)
+
+    return 
+
+words = input("Enter a hypen-separated sequence of words:\n")
+
+sort_alphabet(words)
 
 
 
