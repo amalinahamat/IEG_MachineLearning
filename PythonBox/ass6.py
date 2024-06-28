@@ -112,5 +112,34 @@ def proper_divisors(number):
 number = int(input("Enter an integer of a number: "))
 proper_divisors(number)
 
+# 6
+
+# A number is called perfect if the sum of proper divisors 
+# of that number is equal to the number. For example 28 is 
+# perfect number, since 1+2+4+7+14=28. Write a program to 
+# print all the perfect numbers in a given range
+
+def perfect_proper_divisors(number):
+    perfect_numbers = []
+    for num in range(1,number + 1):
+        sum = 0
+        proper_divisors = []
+        for divisor in range(1,num):
+            if num % divisor == 0:
+                proper_divisors.append(divisor)
+                sum = sum + divisor
+        if sum == num:
+            perfect_numbers.append(num)
+            print(f"{num} is a perfect number. Proper divisors: ({proper_divisors} = {sum})")
+        
+    return perfect_numbers
+
+
+number = int(input("Enter an integer of a number: "))
+perfect_number = perfect_proper_divisors(number)
+
+print(f"Perfect numbers between 1 and {number}: {perfect_number}")
+
+
 
 
