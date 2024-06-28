@@ -65,7 +65,6 @@ def prime_factor(number):
     print("prime factor: ", prime_factors)
             
 
-
 number = int(input("Enter an integer number: "))
 
 prime_factor(number)
@@ -90,9 +89,28 @@ number = int(input("Enter an integer number: "))
 
 product_number(number)
 
+# 5
+# Write a function that takes a number as parameter. 
+# The function finds the proper divisors of that number 
+# and then finds the sum of proper divisors. Proper divisors 
+# of a number are those numbers by which the number is divisible, 
+# except the number itself.
 
+# For example proper divisors of 36 are 1, 2, 3, 4, 6, 9, 18
+ 
+def proper_divisors(number):
+    list_properdivisor = []
+    sum = 0
+    for num in range(1,number):
+        if number % num == 0:
+            list_properdivisor.append(num)
+            sum = sum + num
+        
+    print("list of proper divisor: ", list_properdivisor)
+    print("sum of proper divisor: ",sum)
 
-    
+number = int(input("Enter an integer of a number: "))
+proper_divisors(number)
 
 
 
