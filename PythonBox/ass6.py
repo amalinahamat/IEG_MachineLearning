@@ -141,5 +141,44 @@ perfect_number = perfect_proper_divisors(number)
 print(f"Perfect numbers between 1 and {number}: {perfect_number}")
 
 
+# 7
+# Write a python function that takes 2 parameters lower and upper (range).
+# Let the function returns pairs of amicable numbers in that range.
+# Two different numbers are called amicable numbers if the sum of the proper 
+# divisors of each is equal to the other number. For example 220 and 284 are 
+# amicable numbers.
+
+def amicableNumbers(lower,upper): 
+    def sum_proper_division(num):
+        proper_divisors = []
+        total = 0
+        for i in range(1,num):
+            if num % i == 0:
+                proper_divisors.append(i)
+                total = total + i
+                   
+        return total,proper_divisors
+    
+    amicable_pairs = []
+    for num in range(lower, upper + 1):
+        sum, divisor = sum_proper_division(num)
+        if sum > num and sum <= upper:
+            next_sum, next_divisor = sum_proper_division(sum)
+            if next_sum == num:
+                amicable_pairs.append((num,sum))
+                print(f"Amicable pair: {num} and {sum}")
+                print(f"Sum of proper divisors of {num} : {divisor} = {sum}")
+                print(f"Sum of proper divisors of {sum} : {next_divisor} = {next_sum}")    
+    return amicable_pairs
+
+lower = int(input("Enter a lower integer number: "))
+upper = int(input("Enter a hupper integer number: "))
+
+amicable_pairs = amicableNumbers(lower,upper)
+
+
+
+
+
 
 
