@@ -29,7 +29,7 @@ def twin_primes ():
                 break
         else:
             numprime.append(num)
-            
+
     twin_primes_list = []
 
     for odd in range(len(numprime) - 1):
@@ -40,8 +40,55 @@ def twin_primes ():
         print(f"{twin[0]} and {twin[1]}")
 
 twin_primes()
-    
 
+# 3 
+# Write a simple python function that takes a number as parameter and returns 
+# the prime factors of that number. Prime Factorization is finding which prime 
+# numbers multiply together to make the original number.
+# Example: prime factors of 56 - 2, 2, 2, 7
+
+def prime_factor(number):
+    prime_factors = []
+
+    while number % 2 == 0:
+        prime_factors.append(2)
+        number = number // 2
+
+    for j in range(3,number):
+        while number % j == 0:
+            prime_factors.append(j)
+            number = number // j
+            
+    if number > 2:
+        prime_factors.append(number)
+
+    print("prime factor: ", prime_factors)
+            
+
+
+number = int(input("Enter an integer number: "))
+
+prime_factor(number)
+
+    
+# 4
+# Write a function that inputs a number and returns 
+# the product of digits of that number.
+
+def product_number(number):
+    total = 1
+    while number > 0:
+        product = number % 10 
+        total = product * total
+
+        number = number // 10
+    
+    print("Product of the digits of number: ",total)
+
+
+number = int(input("Enter an integer number: "))
+
+product_number(number)
 
 
 
