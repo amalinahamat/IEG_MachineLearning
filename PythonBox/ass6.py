@@ -177,7 +177,7 @@ lower = int(input("Enter a lower integer number: "))
 upper = int(input("Enter a hupper integer number: "))
 
 amicable_pairs = amicableNumbers(lower,upper)
-'''
+
 # 8
 
 # Write a python function that takes variable length parameters and returns maximum
@@ -207,12 +207,37 @@ print((numbers))
 print(len(numbers))
 
 maximun_minimum(numbers)
-
+'''
 # 9 
 # Write a simple Python function that takes a number(n) as a parameter. 
 # Then the function prints out the first n rows of Pascal's triangle. 
 # Note : Pascal's triangle is an arithmetic and geometric figure first 
 # imagined by Blaise Pascal.
+
+def Pascal_Triangle(numbers):
+
+    def factorial(numbers):
+        sum = 1
+        for num in range(1,numbers + 1):
+            sum = sum * num
+
+        return sum
+    
+    for i in range(numbers):
+        for j in range(numbers - i + 1):
+
+            print(end =" ")
+        
+        for j in range(i + 1):
+            print((factorial(i) // (factorial(j) * factorial(i-j))), end = " ")
+
+        print()
+    
+
+numbers = int(input("Enter an integer of a number: "))
+Pascal_Triangle(numbers)
+
+
 
 
 
