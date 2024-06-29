@@ -14,7 +14,6 @@ print()
 arithmetic(number)
 
 # 2
-
 # Write a simple python function that returns twin primes 
 # less than 1000. If two consecutive odd numbers are both 
 # prime then they are known as twin primes.
@@ -96,9 +95,8 @@ product_number(number)
 # and then finds the sum of proper divisors. Proper divisors 
 # of a number are those numbers by which the number is divisible, 
 # except the number itself.
-
 # For example proper divisors of 36 are 1, 2, 3, 4, 6, 9, 18
- 
+
 def proper_divisors(number):
     list_properdivisor = []
     sum = 0
@@ -179,7 +177,6 @@ upper = int(input("Enter a hupper integer number: "))
 amicable_pairs = amicableNumbers(lower,upper)
 
 # 8
-
 # Write a python function that takes variable length parameters and returns maximum
 # and minimum number in the parameter numbers.
 # For example if we call the function: maximumMinimum(10, 20, 30, 40, 50)
@@ -236,8 +233,6 @@ def Pascal_Triangle(numbers):
 
 numbers = int(input("Enter an integer of a number: "))
 Pascal_Triangle(numbers)
-
-
 
 # 10
 # Write a simple python function that accepts a hyphen-separated sequence of words 

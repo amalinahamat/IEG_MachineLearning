@@ -1,5 +1,9 @@
 '''
+'''
 # 1
+# Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" 
+# instead of the number, and for the multiples of five, print "Buzz". 
+# For numbers which are multiples of both three and five, print "FizzBuzz".
 number = 100
 three = 1
 five = 1
@@ -33,6 +37,10 @@ for i in range(1, number + 1):
 '''
 '''
 # 2
+# Write a program that takes an integer input from the user and generates the Collatz sequence for that number. 
+# The Collatz sequence is defined as follows:
+# start with a number n. If n is even, the next number is n/2. If n is odd, the next number is 3n + 1. 
+# Repeat the process until n becomes 1.
 
 number = int(input())
 
@@ -51,7 +59,6 @@ while number > 0 and number != 1:
         number = next_number
 
     print(number, end = " ")
-
 
 
 print()
@@ -77,9 +84,11 @@ for num in list_number:
     print(num, end = " ")
 
 '''
-
-# 3
 '''
+# 3
+# Write a program that takes two integers from the user and 
+# calculates their greatest common divisor (GCD) using the Euclidean algorithm.
+
 A = int(input())
 B = int(input())
 
@@ -108,6 +117,11 @@ print("GCD:", GCD_AB)
 '''
 '''
 # 4
+# Write a program that plays the game of Rock, Paper, Scissors with the user. 
+# The user makes a choice, the program randomly chooses, and the winner is determined.
+# To generate random number use random module
+# import random
+# random.randint(1,3)
 
 import random
 
@@ -139,8 +153,15 @@ else:
     print("Invalid Input")
 
 '''
-# 5
 '''
+# 5
+# Write a program that randomly generates a number between 1 and 100. 
+# The user has to guess the number. After each guess, 
+# the program tells the user whether the guess is too high, too low, or correct. 
+# The game continues until the user guesses the correct number.
+# To generate random number use random module
+# import random
+# random.randint(1,3)
 import random
 
 guess = int(input("Enter the number between 1 to 100: "))
@@ -159,23 +180,55 @@ while guess != machine_index:
     
 print("The guess is correct")
 '''
-# 6
 '''
+# 6
+# Write a program that generates 10 perfect numbers.
+# Example
+# 6: The divisors of 6 are 1, 2, 3, and 6. 
+# The sum of its proper divisors (excluding 6 itself) is 1 + 2 + 3 = 6.
+# 28: The divisors of 28 are 1, 2, 4, 7, 14, and 28. 
+# The sum of its proper divisors (excluding 28 itself) is 1 + 2 + 4 + 7 + 14 = 28.
+
 count_perfect = 0
 prime_num = 2
 
-print("Perfect number: ")
+print("first 10 Perfect number: ")
 
-while count_perfect < 10:
+while count_perfect < 4:
 
     for i in range(2,prime_num):
         if prime_num % i == 0:
             break
-    
+
+    else:
+        perfect_number = (2 ** (prime_num - 1)) * (2 ** prime_num - 1)
+        print(perfect_number)
+        count_perfect += 1
+
+
+    prime_num += 1
+
+print()
+
+# or
+
+count_perfect = 0
+prime_num = 2
+
+print("first 10 Perfect number: ")
+
+while count_perfect < 8:
+
+    #for i in range(2,prime_num):
+    for i in range(2, int(prime_num ** 0.5) + 1):
+        if prime_num % i == 0:
+            break
+
     else:
         mersenne_prime = (2 ** prime_num - 1)
 
-        for j in range(2, mersenne_prime):
+        #for j in range(2, mersenne_prime):
+        for j in range(2, int(mersenne_prime ** 0.5) + 1):
             if mersenne_prime % j == 0:
                 break
 
@@ -184,12 +237,14 @@ while count_perfect < 10:
             print(perfect_number)
             count_perfect += 1
 
-    
+
     prime_num += 1
 
 '''
 '''
 # 7
+# Write a program that calculates the sum of the first n terms of the harmonic series. Take the n as Input.
+# Hn = 1 + 1/2 + 1/3 + 1/4 .... + 1/n
 
 n = int(input())
 
@@ -207,7 +262,7 @@ else:
 '''
 '''
 # 8
-
+# Write a program that converts a number to its word representation (e.g., 123 to "one hundred twenty-three").
 number = int(input("Enter an integer of number: "))
 
 def units(number):
@@ -273,8 +328,11 @@ def number_to_word(number):
 print("number to words:",number_to_word(number))
 
 '''
-# 9
 '''
+# 9
+# Write a program to convert a Roman numeral to an integer 
+# and also convert integer to Roman numeral 
+
 number = input("Enter a numeral number or roman number: ")
 
 def numeral_to_roman(number):
@@ -318,9 +376,7 @@ if number.isdigit():
 else:
     print(roman_to_numeral(number.upper()))
 
-'''
-
-'''
+# or
 
 def integerToRoman(number):
     romansDict = {
@@ -367,7 +423,7 @@ def integerToRoman(number):
 
 number = int(input("Enter a numeral number: "))
 
-# Driver code
+
 print("Roman to integer is:"
                 + str(integerToRoman(number)))
 
@@ -413,11 +469,14 @@ def roman_to_integer(roman):
 
 roman = (input("Enter a roman number: "))
 print("Integer to Roman is: ", roman_to_integer(roman))
-    
-char = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n",
-        "n","o","p","q","r","s","t","u","v","w","x","y","z"]
-                
+
 '''
+'''
+# 10
+# Write a program to perform basic string compression using the counts of repeated characters 
+# (e.g., "aabcccccaaa" -> "a2b1c5a3").
+    
+
 list_word = input("Write a single word: ")
 
 word = []

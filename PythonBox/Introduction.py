@@ -159,3 +159,40 @@ my_number = 9
 user_number = int(input("Enter your number: "))
 matches = my_number == user_number
 print(f"You got it right: {matches}")  
+
+'''
+# 7 Idesign
+# Write a program to accept strings as command line 
+# argument and print the number of arguments entered.
+
+import sys
+arguments = sys.argv
+
+print("Arguments :")
+for argument in arguments[1:]:
+    print(argument)
+
+print(f"Number of arguments is {len(arguments) - 1} ")
+'''
+'''
+# iAssess
+# First line of the input is an integer value that corresponds to the number of people who watched show 1.
+# Second line of the input is a float value that corresponds to the average rating of show 1.
+# Third line of the input is an integer value that corresponds to the number of people who watched show 2.
+# Fourth line of the input is a float value that corresponds to the average rating of show 2.
+# Fifth line of the input is an integer value that corresponds to the number of people who watched show 3.
+# Sixth line of the input is a float value that corresponds to the average rating of show 3.
+
+show_1 = int(input("Enter the number of people who watched show 1\n"))
+average_show_1 = float(input("Enter the average rating for show 1\n"))
+
+show_2 = int(input("Enter the number of people who watched show 2\n"))
+average_show_2 = float(input("Enter the average rating for show 2\n"))
+
+show_3 = int(input("Enter the number of people who watched show 3\n"))
+average_show_3 = float(input("Enter the average rating for show 3\n"))
+
+total_average_show = ((show_1 * average_show_1) + (show_2 * average_show_2) + (show_3 * average_show_3)) / (show_1 + show_2 + show_3)
+print(f"The overall average rating for show is {total_average_show:.2f}")
+ 
+'''
