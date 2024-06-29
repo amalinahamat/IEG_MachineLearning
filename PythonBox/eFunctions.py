@@ -155,7 +155,7 @@ print(f"Greatest common divisor of {n1} and {n2} = {gcd_result}")
 print(f"Least common multiple of {n1} and {n2} = {lcm_result}")
 
 '''
-
+'''
 # 4
 
 def addition(n1,n2):
@@ -197,6 +197,84 @@ if number > 0 and number < 6:
         print(modulus(n1,n2))
 else:
     print("Invalid Input")
+    
+'''
+'''
+# 5
+
+list_size = int(input("Enter size of list\n"))
+
+list_element = []
+if list_size > 0 :
+    print("Enter the element in list")
+    for size in range(list_size):
+        size_element = int(input())
+        list_element.append(size_element)
+
+else:
+    print("Invalid input")
+
+
+div_by_13 = lambda x: x % 13 == 0
+
+div_number = []
+for num in list_element:
+    if div_by_13(num):
+        div_number.append(num)
+
+if list_size > 0:
+    for num in div_number:
+        print(num,end = " ")
+
+    print()
+'''
+'''
+# i assess 1
+
+def multiply1(a):
+    mul1 = a * 10 
+    return mul1
+
+def multiply2(a,b):
+    mul2 = a * b
+    return mul2
+
+def multiply3(a,b=9):
+    mul3 = a * b
+    return mul3
+
+number = 2
+list_name = []
+
+for num in range(number):
+    n = int(input())
+    list_name.append(n)
+
+a = list_name[0]
+b = list_name[1]
+
+print(f"the result is {multiply1(a)}")
+print(f"the result is {multiply2(a,b)}")
+print(f"the result is {multiply3(a,b=9)}")
+
+'''
+# 2
+def multiVarFunc(department,total_student,total_faculties):
+
+    print("Details:")
+    depart = print(f"Department:{department}")
+    student = print(f"Total students:{total_student}")
+    faculties = print(f"Total faculties:{total_faculties}")
+    return depart,student,faculties
+
+department = input("Enter department name:\n")
+total_student = int(input("Enter the number of total students:\n"))
+total_faculties = int(input("Enter the number of total faculties:\n"))
+
+multiVarFunc(department,total_student,total_faculties)
+
+
+
     
 
 
