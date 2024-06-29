@@ -84,8 +84,9 @@ Odd(3,4)
 
 # 10
   
-
+'''
 # iDesign 
+# 1
 
 def greet(argument1,argument2 = "Welcome to Python Programming"):
     return (f"Hello {argument1},{argument2}")
@@ -101,6 +102,71 @@ elif number == 2:
     result = greet(argument1)
 
 print(result)
+
+'''
+'''
+# 2
+def daysInYear(argument1, argument2=False):
+    if argument2:
+        return f"{argument1} is a leap year"
+    else:
+        return f"{argument1} is not a leap year"
+
+# Read input year
+argument1 = int(input())
+
+# Determine if the year is a leap year
+argument2 = (argument1 % 4 == 0 and argument1 % 100 != 0) or (argument1 % 400 == 0)
+
+# Call the function with the year and the leap year status
+result = daysInYear(argument1, argument2)
+print(result)
+'''
+'''
+# 3
+def GCD(n1,n2):
+    while n2 !=0:
+        temp = n2
+        n2 = n1 % n2
+        n1 = temp
+
+    return n1
+
+def LCM(n1,n2):
+    gcd = GCD(n1,n2) 
+    lcm = (n1 * n2) // gcd
+
+    return lcm
+
+print("Enter two integers")
+number = 2
+nums = []
+for num in range(number):
+    n = int(input())
+    nums.append(n)
+
+n1 = nums[0]
+n2 = nums[1]
+
+gcd_result = GCD(n1,n2)
+lcm_result = LCM(n1,n2)
+
+print(f"Greatest common divisor of {n1} and {n2} = {gcd_result}")
+print(f"Least common multiple of {n1} and {n2} = {lcm_result}")
+
+'''
+
+# 4
+
+def addition(n1,n2):
+    add = n1 + n2
+    return add
+
+def subtraction(n1,n2):
+    subtract = n1 - n2
+    return subtract
+
+def multipl
 
 
 
