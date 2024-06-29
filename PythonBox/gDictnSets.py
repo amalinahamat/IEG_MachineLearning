@@ -1,3 +1,4 @@
+'''
 # i explore
 import math
 print(abs(math.sqrt(25)))
@@ -19,7 +20,8 @@ print(d["john"])
 
 a = (2,3,4)
 print(sum(a,3)) # means initial sum = 3 => 3 +2 + 3+4 = 12
-
+'''
+'''
 # iAnalyse
 
 a = (1,2,3)
@@ -40,7 +42,30 @@ print(b is a) # False. different object. different memory address
 
 if a == (1,2,3,4):
     print(a[1:-1])
+'''
 
 
+number = int(input())
 
+set_list = []
+for num in range(number):
+    input_line = input()
+    input_number = input_line.split(",")
+    s = set()
+    for nums in input_number:
+        s.add(int(nums))
+    set_list.append(s)
 
+union_set = set()
+for i in set_list:
+    union_set = union_set.union(i)
+
+sorted_union = sorted(union_set)
+
+if len(sorted_union) >= 2:
+    second_largest = sorted_union[-2]
+else:
+    second_largest = None
+
+print(f"set({sorted_union})")
+print(second_largest)
