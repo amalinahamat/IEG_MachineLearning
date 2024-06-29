@@ -362,6 +362,7 @@ seconds = seconds - (minutes * 60)
 output = (f"{days} days, {hours}:{minutes:02}:{seconds:02}")
 print(output)
 '''
+'''
 # 8
 sheet_number = int(input())
 
@@ -379,4 +380,4 @@ for number_tuple in list_student_code:
     
 final_number = tuple(sorted(register_number))
 print(f"Final sheet: {final_number}")
-
+'''
