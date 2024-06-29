@@ -160,13 +160,48 @@ print(f"Least common multiple of {n1} and {n2} = {lcm_result}")
 
 def addition(n1,n2):
     add = n1 + n2
-    return add
+    return (f"{n1} + {n2} = {add}")
 
 def subtraction(n1,n2):
     subtract = n1 - n2
-    return subtract
+    return (f"{n1} - {n2} = {subtract}")
 
-def multipl
+def multiply(n1,n2):
+    mul = n1 * n2
+    return (f"{n1} * {n2} = {mul}")
+
+def divide(n1,n2):
+    div = n1 // n2
+    return (f"{n1} // {n2} = {div}")
+
+def modulus(n1,n2):
+    mod = n1 % n2
+    return (f"{n1} % {n2} = {mod}")
+
+print("Select the operation")
+print("1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Modulus")
+number = int(input("Enter the choice(1/2/3/4/5):\n"))
+
+if number > 0 and number < 6:
+    n1 = int(input("Enter the first number\n"))
+    n2 = int(input("Enter the second number\n"))
+    if number == 1:
+        print(addition(n1,n2))
+    elif number == 2:
+        print(subtraction(n1,n2))
+    elif number == 3:
+        print(multiply(n1,n2))
+    elif number == 4:
+        print(divide(n1,n2))
+    elif number == 5:
+        print(modulus(n1,n2))
+else:
+    print("Invalid Input")
+    
+
+
+
+
 
 
 
