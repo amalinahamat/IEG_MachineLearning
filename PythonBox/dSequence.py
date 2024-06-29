@@ -310,5 +310,73 @@ total_cost = total_book * book_price
 print(f"Total number of books required : {total_book}")
 print(f"Total cost: {total_cost}")
 '''
-
+'''
 # 6
+set1 = input().split(',')
+set2 = input().split(',')
+
+list_set1 = set(set1)
+list_set2 = set(set2)
+
+if list_set1 == list_set2:
+    print("invalid set")
+else:
+    difference = list_set1.symmetric_difference(list_set2)
+
+    ordered_difference = []
+    for item in set1 + set2:
+        if item in difference and item not in ordered_difference:
+            ordered_difference.append(item)
+    
+    
+    difference_set = set()
+    for i in ordered_difference:
+        difference_set.add(int(i))
+    print(difference_set)
+'''
+'''
+# 7
+# The format of the dates is like "Jul 1 2014 2:43 PM"(without quotes). '
+from datetime import datetime
+
+first_date = input()
+second_date = input()
+
+date_format = "%b %d %Y %I:%M%p"
+
+date1 = datetime.strptime(first_date,date_format)
+date2 = datetime.strptime(second_date,date_format)
+
+#if date1 > date2:
+#    date1,date2 = date2,date1
+
+difference = date2 - date1
+
+days = difference.days
+seconds = difference.seconds
+hours = seconds // 3600
+seconds = seconds - (hours * 3600)
+minutes = seconds // 60
+seconds = seconds - (minutes * 60)
+
+output = (f"{days} days, {hours}:{minutes:02}:{seconds:02}")
+print(output)
+'''
+# 8
+sheet_number = int(input())
+
+list_student_code = []
+for number_student in range(sheet_number):
+    student_code = input().split()
+    students_tuple = tuple(map(int, student_code))
+    list_student_code.append(students_tuple)
+
+print(f"Attendance Sheets with Register Number: {tuple(list_student_code)} ")
+
+register_number = set()
+for number_tuple in list_student_code:
+    register_number.update(number_tuple)
+    
+final_number = tuple(sorted(register_number))
+print(f"Final sheet: {final_number}")
+

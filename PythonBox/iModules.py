@@ -11,8 +11,8 @@ print(sys.stdout.write("hello world"))
 
 #print(eval(sys.stdin.readline()))
 
-from clientmodules import change
-from decision import change
+from iClientmodules import change
+from bDecision import change
 s = [1,2,3]
 change(s)
 
