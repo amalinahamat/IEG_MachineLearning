@@ -450,7 +450,7 @@ for word in words:
 
 print(word_count)
 '''
-
+'''
 # iAssess_ 1
 set1 = input()
 set2 = input()
@@ -464,7 +464,29 @@ third = list_set1.issuperset(list_set2)
 fourth = list_set2.issuperset(list_set1)
 print(first,second,third,fourth,sep="\n")
 
+'''
 # iAssess_2
+
+passport_details = {}
+
+number = int(input("Enter the number of clients\n"))
+
+for num in range(1,number + 1):
+    print(f"Enter the details of the client {num}")
+    name = input()
+    email = input()
+    passport = input()
+
+    passport_details[passport] = f"{name}--{email}--{passport}"
+
+passport_search = input("Enter the passport number of the client to be searched\n")
+
+if passport_search in passport_details:
+    print("Client Details")
+    print(passport_details[passport_search])
+else:
+    print("Client not found")
+
 
 
 
