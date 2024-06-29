@@ -380,4 +380,98 @@ for number_tuple in list_student_code:
     
 final_number = tuple(sorted(register_number))
 print(f"Final sheet: {final_number}")
+
 '''
+# 9
+'''
+students = \
+{
+    "John"   :{"Exam mark": 65},
+    "Paul"   :{"Exam mark": 68},
+    "Ringo"  :{"Exam mark": 75},
+    "George" :{"Exam mark": 76},
+    "Fred"   :{"Exam mark": 63},
+    "Wilma"  :{"Exam mark": 76},
+    "Betty"  :{"Exam mark": 70},
+    "Barney" :{"Exam mark": 60},
+}
+'''
+'''
+students = \
+{
+    "John"   :[65],
+    "Paul"   :[68],
+    "Ringo"  :[75],
+    "George" :[76],
+    "Fred"   :[63],
+    "Wilma"  :[76],
+    "Betty"  :[70],
+    "Barney" :[60],
+}
+students_number = int(input())
+
+for student in range(students_number):
+    student_input = input().split(" ")
+    name = student_input[0]
+    marks = list(map(int,student_input[1:]))
+    students[name] = marks
+
+find_student = input()
+
+if find_student in students:
+    student_mark = students[find_student]
+    find_mark = set(student_mark)
+
+    if len(find_mark) == 1:
+        marks = student_mark[0]
+        print(f"{find_student} scored same marks in all subjects: {marks}")
+    else:
+        sort_mark = sorted(find_mark)
+        second_highest = sort_mark[-2]
+        print(f"Second highest mark of {find_student}: {second_highest}")
+
+else:
+    print("Students does not exist")
+
+'''
+'''
+# 10
+
+sentences = input()
+words = sentences.split()
+
+word_count = {}
+
+for word in words:
+    if word in word_count:
+        word_count[word] = word_count[word] + 1
+    else:
+        word_count[word] = 1
+
+print(word_count)
+'''
+
+# iAssess_ 1
+set1 = input()
+set2 = input()
+
+list_set1 = set(set1)
+list_set2 = set(set2)
+
+first = list_set1.issubset(list_set2)
+second = list_set2.issubset(list_set1)
+third = list_set1.issuperset(list_set2)
+fourth = list_set2.issuperset(list_set1)
+print(first,second,third,fourth,sep="\n")
+
+# iAssess_2
+
+
+
+
+
+
+
+
+
+
