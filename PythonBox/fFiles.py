@@ -178,6 +178,16 @@ print(reverse_content)
 
 # 5
 
+file_path = open("SalariesDataSet.csv","rt")
+
+content = file_path.read()
+
+modified_content = content.replace(",",";")
+
+print(modified_content)
+
+
+
 
 
 
