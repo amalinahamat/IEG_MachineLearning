@@ -1,4 +1,161 @@
+#videos 1
+
 '''
+functions 
+1.reusability
+2.modular => easy to detect error
+
+1.in built functions
+2.user-defined function
+
+1. start with def => definition
+2. followed by a function mane (rules for name same as variable)
+3. followed by (parameter/input/argument) => can also pass wothout argument
+4. folloes by :
+5. eg . def dum_of_two_number(a,b):
+
+
+'''
+'''
+def mul(x,y):
+    f = x * y
+    return f
+def sum_of_two_numbers(a,b):
+    print("Inside sum function")
+    add = a + b
+    d = mul(add,b)
+    return add # default return value is None
+
+a = 3
+b = 4
+add = sum_of_two_numbers(a,b)
+f = mul(add,b)
+print("sum =", add)
+print("mul",f)
+'''
+'''
+recursion = a function calling (a copy) of itself
+code look simple
+
+def fun(args):
+    pass
+
+factorial 
+n! = n*(n-1)
+5! = 5*4*3*2*1
+4! = 4*3*2*1
+3! = 3*2*1
+2! = 2*1
+1! = 1 => BASE CASE
+0! = 0
+
+def factorial(n):
+    if n == 1 or n == 0:
+        return 1
+    return n*factorial(n-1)
+
+    n = int (input())
+f = factorial(5)
+print(f)
+
+fibonacci
+
+0 1 1 2 3 5 8 13 21....
+0 1 2 3 4 5 6....
+
+n == 0
+n == 1
+f(n) = f(n-1) + f(n-2)
+
+
+def fib(n):
+    if n == 0 or n == 1: return n
+    return fib(n-1) + fib(n-2)
+
+n = int(input())
+print(fib(n))
+
+
+combination
+
+nCr = n!/(r!*(n-r)!)
+
+nCr = (n-1)Cr + (n-1)C(r-1)
+
+6C4 = 5C4 + 5C3
+
+15 = 5 + 10
+
+nCn = 1
+nC1 = n
+nC0 = 1
+
+def comb(n,r):
+    if r == n or r == 0: return 1
+    if r == 1 :return n
+    return comb(n-1,r) + comb(n-1,r-1)
+
+n = int(input())
+r = int(input())
+
+print(comb(n,r))
+
+'''
+'''
+stack model
+Last in Fist out
+
+1) required argument
+2) keyword argument
+3) default argument
+4) variable-length argument
+
+def sum(b,a):
+    print("a=",a)
+    print("b=",b)
+    c = a + b
+    return c
+
+x = 5
+y = 10
+d = sum(a=x,b=y)
+print(d)
+'''
+'''
+def sum(a=5,b=10,d=20,e=30):
+    c = a+b+d+e
+    return c
+
+print(sum())
+x = 5
+c = sum(x)
+print("sum=",c)
+d = sum(x,20)
+print("sum=",d)
+
+or
+
+print(sum())
+print(sum(50))
+print(sum(50,100))
+print(sum(50,100,200))
+print(sum(50,100,200,300))
+
+---
+def sum(b,c,*a):
+    print(a)
+    print(type(a))
+    print("b=",b)
+    print("c=",c)
+
+d = sum(1,2,3,4,5,6,7,8,9,10)
+print("d = ",d)
+
+
+
+'''
+'''
+
 # iExplore
 # 3
 def f(x, y, z):
