@@ -465,6 +465,7 @@ fourth = list_set2.issuperset(list_set1)
 print(first,second,third,fourth,sep="\n")
 
 '''
+'''
 # iAssess_2
 
 passport_details = {}
@@ -486,6 +487,10 @@ if passport_search in passport_details:
     print(passport_details[passport_search])
 else:
     print("Client not found")
+'''
+
+# 5
+
 
 
 
