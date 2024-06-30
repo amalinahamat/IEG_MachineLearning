@@ -131,6 +131,21 @@ else:
 
 '''
 
+#file_path = open("sample.txt","w")
+#t = "1\n2\n3\n4\n5\n"
+#ile_path.write(t)
+
+file_path = open("sample.txt","rt")
+number = file_path.readlines()
+#print(number)
+total_sum = 0
+for s in number:
+    total_sum = total_sum + int(s)
+
+print(f"The sum of the integers in the file sample.txt is:{total_sum}")
+
+
+
 
 
 
