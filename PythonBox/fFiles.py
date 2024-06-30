@@ -115,6 +115,8 @@ pos = fo.tell()
 print("Current Position:"+str(pos))
 fo.close()
 '''
+# idesign
+# 1
 '''
 
 
@@ -130,6 +132,8 @@ else:
     print("0")
 
 '''
+# 2
+'''
 
 #file_path = open("sample.txt","w")
 #t = "1\n2\n3\n4\n5\n"
@@ -143,6 +147,39 @@ for s in number:
     total_sum = total_sum + int(s)
 
 print(f"The sum of the integers in the file sample.txt is:{total_sum}")
+
+'''
+'''
+# 3
+file_path = open("input.txt","rt")
+file = file_path.readlines()
+file_path.close()
+
+total_lines = len(file)
+
+print(f"The file has {total_lines} lines")
+'''
+'''
+# 4
+
+file_path = open("input.txt","rt")
+
+content = file_path.read()
+
+reverse_content = content[::-1]
+
+file_reverse_path = open("output.txt","w")
+
+file_reverse_path.write(reverse_content)
+
+print(reverse_content)
+
+'''
+
+# 5
+
+
+
 
 
 
