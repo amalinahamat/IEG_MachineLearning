@@ -175,6 +175,7 @@ file_reverse_path.write(reverse_content)
 print(reverse_content)
 
 '''
+'''
 
 # 5
 
@@ -185,6 +186,31 @@ content = file_path.read()
 modified_content = content.replace(",",";")
 
 print(modified_content)
+
+'''
+# i Assess
+# 1
+
+file_path = open("frequencyFile.txt","rt")
+content = file_path.read()
+
+char_count = {}
+
+for char in content:
+    char = char.lower()
+    if char.isalpha():
+        if char in char_count:
+            char_count[char] = char_count[char] + 1
+        else:
+            char_count[char] = 1
+
+sorted_char = sorted(char_count.items())
+
+for char,count in sorted_char:
+    print(f"{char}: {count}")
+
+
+
 
 
 
