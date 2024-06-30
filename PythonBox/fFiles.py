@@ -188,6 +188,7 @@ modified_content = content.replace(",",";")
 print(modified_content)
 
 '''
+'''
 # i Assess
 # 1
 
@@ -209,12 +210,15 @@ sorted_char = sorted(char_count.items())
 for char,count in sorted_char:
     print(f"{char}: {count}")
 
+'''
+file_path = open("salaryData.csv","w")
+#content = file_path.read()
 
-
-
-
-
-
+number = int(input())
+for num in range(number):
+    name = input()
+    salary = int(input())
+    file_path.write(f"{name},{salary}\n")
 
 
 
