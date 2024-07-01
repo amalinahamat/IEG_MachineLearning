@@ -61,11 +61,60 @@ print(d)
 
 video 3 set
 
+sets 
+1) unordered - hashing
+2) unindexed
+3) no duplicate elements
+4) elements should be immutable // cannot have list,dict because it is mutable, but can have tuple
+s ={} => cannot use this. it will refer to the dictionary class
+s = set{} => should write like it
+
+l = [1,202,34,14,5,6,7,1,2,3,4]
+s = set(l)
+print(l)
+print(s)
+
+for i in s:
+    print(i)
+
+for i in sorted(s):  # make it sort in ascending order
+    print(i)
+
+s = {12,23,43,12,34}
+print(s)
+s.add(123)
+print(s)
+
+or
+
+s1 = {234,345,567}
+s.update(s1)
+print(s)
 
 
+remove
+
+s = {12,23,43}
+s.remove(12)
+print(s)
+s.remove(56) # key error because element does not have in the set
+print(s)
 
 
+s = {12,23,43}
+s.discard(56) #s same as remove but if element are not in the set, it will print nothing
+print(s)
 
+s.pop() # random element will be remove
+print(s)
+
+s.clear()
+print(S)
+
+del(s)
+print(s) # error as s already deleted
+
+# video 4 set
 
 
 # i explore
