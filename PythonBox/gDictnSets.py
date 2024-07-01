@@ -238,4 +238,18 @@ address = \
 for key in address:
     print(f"{key}:{address[key]}")
 
+
+# 2
+set1 = input()
+set2 = input()
+
+list_set1 = set(set1)
+list_set2 = set(set2)
+
+first = list_set1.issubset(list_set2)
+second = list_set2.issubset(list_set1)
+third = list_set1.issuperset(list_set2)
+fourth = list_set2.issuperset(list_set1)
+print(first,second,third,fourth,sep="\n")
+
     
