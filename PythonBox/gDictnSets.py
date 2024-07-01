@@ -1,4 +1,70 @@
 '''
+video 1 dict
+
+dictionary:
+key - value
+
+key
+1) unique
+2) immutable
+3) cannot be None
+
+value
+1) not need to be unique
+2) can be None
+3) can be mutable data
+
+d = {}
+d = dict{}
+
+d = {"name" : "JK", "age":25, "rollNo":12345,"weight":80.5,"subject": ["Maths,"Science],
+"Address":{"DNo": 5213. "SName":"1st cCross", "City":"Cbe", "PinCode":"620014"}}
+
+print(d)
+print{d["name"]}
+print(d["address"])
+print(d["address"]["City])
+print(d["subject"][0])
+print(d["subject"][1])
+
+video 2 dict
+
+update value
+
+d["age"] = 27
+print(d)
+
+d["height"] = "5.7"
+print(d)
+
+delete
+
+del(d["weight"])
+print(d)
+del(d)
+
+d = {1:"int",2.4:"float", (12,23):"tuple", "name":"str",2+3j:"complex"}
+
+for i in d:
+    print(i,d[i],sep="") => i is just key. d[i will print hteir value
+    
+d ={12:"qwe",123:"dfd",1234:"ssd"}
+
+for i in sorted(d): => sorted list
+    print(i, d[i],sep="-")
+
+d.pop(12) => remove something
+priint(d)
+
+d.popitem()
+print(d)
+
+video 3 set
+
+
+
+
+
 
 
 
@@ -118,7 +184,7 @@ if find_student in students:
 else:
     print()   
 '''
-
+'''
 # 5
 
 
@@ -151,6 +217,25 @@ result_set = sorted(set(next_sets_element))
 print(result_set)
 
     
+'''
+# iAssess
+# 1
 
+user_input = input().split(",")
+
+address = \
+{
+    "Door-no": user_input[0] ,
+    "Street" : user_input[1] ,
+    "Area"   : user_input[2] ,
+    "City"   : user_input[3] ,
+    "State"  : user_input[4] ,
+    "Zipcode": user_input[5] ,
+    "Country": user_input[6] ,
+
+}
+
+for key in address:
+    print(f"{key}:{address[key]}")
 
     
