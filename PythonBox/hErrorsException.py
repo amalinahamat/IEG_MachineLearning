@@ -10,7 +10,7 @@ def foo():
         
 k = foo()
 print(k)
-
+'''
 try:
     if '1' != 1:
         raise "someError"
@@ -18,7 +18,7 @@ try:
         print("someError has not occured")
 except "someError":
     print ("someError has occured")
-
+'''
 def foo():
     try:
         print(1)
@@ -36,6 +36,7 @@ else:
     pass
     # Do something
 
+'''
 valid = False
 while not valid:
     try:
@@ -45,5 +46,17 @@ while not valid:
             valid = True
     except ValueError:
         print("Invalid")
+'''
+def getMonth(m):
+    if m<1 or m>12:
+        raise ValueError("Invalid")
+    print(m)
+getMonth(6)
 
-        
+import math
+num = int(input("Enter a number of whose factorial you want to find"))
+print(math.factorial(num))
+
+num = int(input("Enter a number of whose factorial you want to find"))
+print(math.factorial(num))
+

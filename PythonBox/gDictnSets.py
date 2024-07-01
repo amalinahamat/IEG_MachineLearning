@@ -116,6 +116,40 @@ print(s) # error as s already deleted
 
 # video 4 set
 
+union
+intersection
+difference
+symmetric difference
+
+s1 = {1,2,3,4,5,6,7,8,9,10}
+s2 = {2,4,6,8,10,12,14,16,18,20}
+print(s1.union(s2))
+print(s1)
+
+print(s1.intersection(s2))
+print(s1)
+print(s1.intersection_update(s2))
+
+print(s1.difference(s2))
+
+print(s1.symmetric_difference(s2))
+
+subset
+superset
+
+s1 = {1,2,3,4,5,6,7,8,9,10} 
+s2 = {2,4,6,8,10} 
+
+print(s1.issuperset(s2))-> true
+print(s1.issubset(s2))-> false
+print(s2.issuperset(s1))-> false
+print(s2.issubset(s1))-> true
+
+if both sets have same elements, everything will be true
+if both sets have different elements, everything will be false
+
+disjoint => true if both element not have same element between each other
+=============
 
 # i explore
 import math
