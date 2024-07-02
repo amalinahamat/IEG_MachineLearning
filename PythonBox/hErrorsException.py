@@ -271,6 +271,7 @@ except ValueError:
     print("Invalid Value")
 
 '''
+'''
 # 3
 
 class NotEligibleException(Exception):
@@ -295,8 +296,28 @@ try:
 
 except NotEligibleException as e:
     print(f"Inside Except Block: {e}")
+'''
+# 4
 
-    
+while True:
+    try:
+        user_input = input("Enter a positive integer\n")
+        number = int(user_input)
+        if number <= 0:
+            raise ValueError("You entered a negative number. Retry!")
+        else:
+            print(f"Good! You entered {number}")
+            break
+    except ValueError as e:
+        if str(e) == "You entered a negative number. Retry!":
+            print(e)
+        else:
+            print("You entered an invalid value. Retry!")
+
+
+
+
+
 
         
     
