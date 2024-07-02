@@ -317,7 +317,7 @@ while True:
             print("You entered an invalid value. Retry!")
 
 '''
-
+'''
 # 5
 
 matches_number = input("Enter the number of matches\n")
@@ -344,6 +344,29 @@ for i in list_score:
 average_score = sum_score / len(list_score)
 
 print(f"Batting average: {average_score:.2f}")
+'''
+
+# 6
+
+class CustomError(Exception):
+    def __init__(self, message="InvalidAgeRangeException"):
+        self.message = message
+        super().__init__(self.message)
+
+try:
+    name = input("Enter the Name\n")
+    age = int(input("Enter the age\n"))
+
+    if age >= 18:
+        print(f"Voter name: {name}\nVoter age: {age}")
+    else:
+        raise CustomError()
+
+except CustomError as InvalidAgeRange :
+    print(f"CustomException: {InvalidAgeRange}")
+
+
+
 
 
 
