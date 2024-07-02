@@ -297,7 +297,9 @@ try:
 except NotEligibleException as e:
     print(f"Inside Except Block: {e}")
 '''
+'''
 # 4
+
 
 while True:
     try:
@@ -314,8 +316,34 @@ while True:
         else:
             print("You entered an invalid value. Retry!")
 
+'''
 
+# 5
 
+matches_number = input("Enter the number of matches\n")
+
+matches_number = int(matches_number)
+
+list_score = []
+print("Enter the scores")
+
+for number in range(matches_number):
+    try:
+        score = int(input())
+        list_score.append(score)
+    except ValueError:
+        print("Type Error Exception")
+        exit(1)
+
+sum_score = 0
+
+for i in list_score:
+    sum_score = sum_score + i
+
+    
+average_score = sum_score / len(list_score)
+
+print(f"Batting average: {average_score:.2f}")
 
 
 
