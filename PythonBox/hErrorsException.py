@@ -367,6 +367,7 @@ except CustomError as InvalidAgeRange :
 '''
 
 # iAssess
+'''
 # 1
 
 numlist = [2,3,1,5,6,7,1]
@@ -430,8 +431,31 @@ try:
 except CustomError as e:
     print(e)
 
+'''
+# 2
 
+class CustomError(Exception):
+    def __init__(self, message="Invalid Password Exception"):
+        self.message = message
+        super().__init__(self.message)
 
+def validate_password(password):
+    has_lower = any(c.islower() for c in password)
+    has_upper = any(c.isupper() for c in password)
+    has_digit = any(c.isdigit() for c in password)
+
+    if not (has_lower and has_upper and has_digit):
+        raise CustomError()
+
+username = input("Enter the username\n")
+password = input("Enter the password\n")
+
+try:
+    validate_password(password)
+    print(f"Employee Username: {username}\nPassword: {password}")
+
+except CustomError as e:
+    print(f"CustomException: {e}")
 
 
 
