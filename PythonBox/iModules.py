@@ -149,7 +149,7 @@ else:
         
     print(fact)
 '''
-
+'''
 # 3
 number_ball = int(input())
 
@@ -170,6 +170,33 @@ for ball in list_number_ball:
 else:
     print("Sorry!")
         
+'''
+
+# 4
+
+words = input()
+
+words = words.lower()
+words = words.split(" ")
+
+#print(words)
+
+word_count = {}
+for word in words:
+    if word in word_count:
+        word_count[word] += 1
+    else:
+        word_count[word] = 1
+
+#sorted_words = sorted(word_count.items())
+
+for sort in sorted(word_count):
+    print(f"{sort}-{word_count[sort]}")
+
+
+
+        
+
 
 
 
