@@ -229,6 +229,7 @@ while B != 0:
 GCD_AB = A
 print(F"GCD:{GCD_AB}")
 '''
+'''
 # 6
 
 words = input()
@@ -249,23 +250,22 @@ for char in word:
 else:
         print("#")
 
-'''
-list_char = []
-for char in word:
-    #print(char)
-    list_char.append(char)
-#print(list_char)
-
-for char in range(len(list_char) - 1):
-    if list_char[char] != list_char[char + 1]:       
-        print(list_char[char])
-        break
-        
-else:
-    print("#")
 
 '''
+# 7
+number = input("Enter the values:\n").split(" ")
 
+
+list_number = []
+for num in number:
+    list_number.append(int(num))
+print(list_number)
+
+max_number = max(list_number)
+min_number = min(list_number)
+
+print(f"The maximum value is : {max_number}")
+print(f"The minimum value is : {min_number}")
 
         
 
