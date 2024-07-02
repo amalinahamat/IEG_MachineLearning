@@ -137,17 +137,39 @@ elif number > 2:
 else:
     print("Invalid error")
 '''
-
+'''
 # 2
 number = int(input())
+fact = 1
+if number == 0 :
+    print("1")
+else:
+    for num in range(1,number + 1):
+        fact = num * fact
+        
+    print(fact)
+'''
 
-i = 1
-total = 0
-for num in range(1,number + 1):
-    fact = num * i
-    total = total + fact
+# 3
+number_ball = int(input())
 
-print(total)
+list_number_ball = []
+for number in range(number_ball):
+    num = int(input())
+    list_number_ball.append(num)
+
+print(list_number_ball)
+
+number_search_ball = int(input())
+
+
+for ball in list_number_ball:
+    if ball == number_search_ball:
+        print("Got it")
+        break
+else:
+    print("Sorry!")
+        
 
 
 
