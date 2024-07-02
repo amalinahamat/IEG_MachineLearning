@@ -194,6 +194,7 @@ for word in words:
 for sort in sorted(word_count):
     print(f"{sort}-{word_count[sort]}")
 '''
+'''
 # 5
 
 number = 2
@@ -227,8 +228,43 @@ while B != 0:
 
 GCD_AB = A
 print(F"GCD:{GCD_AB}")
+'''
+# 6
 
+words = input()
+word = words.lower()
 
+char_count = {}
+
+for char in word:
+    if char in char_count:
+        char_count[char] += 1
+    else:
+        char_count[char] = 1
+
+for char in word:
+    if char_count[char] == 1:
+        print(char)
+        break
+else:
+        print("#")
+
+'''
+list_char = []
+for char in word:
+    #print(char)
+    list_char.append(char)
+#print(list_char)
+
+for char in range(len(list_char) - 1):
+    if list_char[char] != list_char[char + 1]:       
+        print(list_char[char])
+        break
+        
+else:
+    print("#")
+
+'''
 
 
         
