@@ -345,7 +345,7 @@ average_score = sum_score / len(list_score)
 
 print(f"Batting average: {average_score:.2f}")
 '''
-
+'''
 # 6
 
 class CustomError(Exception):
@@ -364,6 +364,75 @@ try:
 
 except CustomError as InvalidAgeRange :
     print(f"CustomException: {InvalidAgeRange}")
+'''
+
+# iAssess
+# 1
+
+numlist = [2,3,1,5,6,7,1]
+print(numlist)
+
+#fill your code
+
+class CustomError(Exception):
+    def __init__(self, message="Index Value out of range"):
+        self.message = message
+        super().__init__(self.message)
+
+try: 
+    n = int(input("Enter n\n"))
+
+    if n > len(numlist):
+        raise CustomError ()
+    
+    sum = 0
+
+    for num in numlist:
+        if n > 0:
+            sum = sum + num
+            n = n - 1
+
+    print(f"Sum = {sum}")
+
+except CustomError as e:
+    print()
+
+numlist = [2,3,1,5,6,7,1]
+print(numlist)
+
+#fill your code
+
+class CustomError(Exception):
+    def __init__(self, message="Index Value out of range"):
+        self.message = message
+        super().__init__(self.message)
+
+#class IndexError(Exception):
+#    def __init__(self, message="Index Value out of range"):
+#       self.message = message
+#       super().__init__(self.message)
+
+try: 
+    n = int(input("Enter n\n"))
+
+    if n > len(numlist):
+        raise CustomError ()
+    
+    sum = 0
+
+    for num in numlist:
+        if n > 0:
+            sum = sum + num
+            n = n - 1
+
+    print(f"Sum = {sum}")
+
+except CustomError as e:
+    print(e)
+
+
+
+
 
 
 
