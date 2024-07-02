@@ -171,6 +171,7 @@ else:
     print("Sorry!")
         
 '''
+'''
 
 # 4
 
@@ -192,6 +193,41 @@ for word in words:
 
 for sort in sorted(word_count):
     print(f"{sort}-{word_count[sort]}")
+'''
+# 5
+
+number = 2
+
+list_num = []
+for num in range(number):
+    n = int(input())
+    list_num.append(n)
+
+A = list_num[0]
+B = list_num[1]
+
+GCD_AB = 0
+
+list_GCD_AB = [(A,B)]
+Q = 0
+R = 0
+
+
+while B != 0:
+    Q = A // B
+    R = A % B
+    A = (B * Q) + R
+
+    A = B
+    B = R
+
+    list_GCD_AB.append((A,B))
+
+# print(list_GCD_AB)
+
+GCD_AB = A
+print(F"GCD:{GCD_AB}")
+
 
 
 
