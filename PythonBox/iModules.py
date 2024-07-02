@@ -252,6 +252,7 @@ else:
 
 
 '''
+'''
 # 7
 number = input("Enter the values:\n").split(" ")
 
@@ -266,6 +267,14 @@ min_number = min(list_number)
 
 print(f"The maximum value is : {max_number}")
 print(f"The minimum value is : {min_number}")
+'''
+
+# 8
+number = int(input("Enter the value:\n"))
+
+character = chr(number)
+
+print(f"Character of ASCII value {number} is {character}")
 
         
 
