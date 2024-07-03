@@ -268,7 +268,7 @@ min_number = min(list_number)
 print(f"The maximum value is : {max_number}")
 print(f"The minimum value is : {min_number}")
 '''
-
+'''
 # 8
 number = int(input("Enter the value:\n"))
 
@@ -276,7 +276,30 @@ character = chr(number)
 
 print(f"Character of ASCII value {number} is {character}")
 
-        
+'''
+# I ASSESS
+# 1   
+
+words = input()
+split_char = input()
+
+word = words.split(split_char)
+# print(word)
+
+print("Strings after splitting")
+
+list_word = []
+for char in word:
+    #list_word.append(char.capitalize())
+    print(char.capitalize())
+
+# 2
+    
+
+
+
+
+  
 
 
 
