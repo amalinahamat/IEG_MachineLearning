@@ -74,6 +74,14 @@ else:
 print(first = int("What is 5?")f"   -> {}") 
 
 '''
+# 6
+# Write a Python class that has two methods: getString and printString , 
+# The getString accept a string from the user and printString prints the string in upper case.
+
+
+
+
+
 # 8
 # Write a Python class Inventory with attributes like id, productName, 
 # availableQuantity and price. Add methods like addItem, updateItem, 
@@ -81,7 +89,7 @@ print(first = int("What is 5?")f"   -> {}")
 # Use a dictionary to store the item details, where the key is the id 
 # and the value is a dictionary containing the productName, availableQuantity and price.
 '''
-class Inventory():
+class Inventory:
 
     item_details = \
         {
@@ -161,6 +169,7 @@ else:
     print("Invalid input! Please enter just number between 1 and 3.")
 
 '''
+'''
 class Inventory():
 
     item_details = \
@@ -186,6 +195,7 @@ class Inventory():
         self.availableQuantity = availableQuantity
         self.price = price
         #self.item_details = {}
+        
 
     def addItem(self,id_number,productName,availableQuantity,price):
         self.item_details[id_number] = \
@@ -256,6 +266,8 @@ elif number == 3:
 else:
     print("Invalid input! Please enter just number between 1 and 3.")
 
+
+'''
 
 
 

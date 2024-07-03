@@ -259,6 +259,41 @@ else:
     print(palindrome)
 
 '''
+words = input()
+length = len(words)
+if words[::-1] == words:
+    print(words)
+else:
+    half_lenght = int(length / 2)
+    if length % 2 != 0 :
+        new_word = words[:half_lenght + 1] + words[half_lenght - 1 :: -1]
+        print(new_word)
+    else:
+        new_word = words[:half_lenght] + words[half_lenght - 1 :: -1]
+        print(new_word)
+
+'''
+Example 1: Palindrome Input
+Input: racecar
+
+length = 7
+words[::-1] == words is True because racecar reversed is racecar.
+Output: racecar
+Example 2: Non-Palindrome Input
+Input: hello
+
+length = 5
+words[::-1] == words is False because hello reversed is olleh.
+HL = 2 (since int(5 / 2) is 2)
+length % 2 != 0 is True because 5 % 2 is 1.
+new_word = words[:HL + 1] + words[HL - 1 :: -1]
+words[:HL + 1] is words[:3] which is hel
+words[HL - 1 :: -1] is words[1::-1] which is eh (substring from index 1 to 0, inclusive, in reverse)
+new_word = "hel" + "eh" = "heleh"
+Output: heleh
+
+'''
+     
 '''
 # 3
 
