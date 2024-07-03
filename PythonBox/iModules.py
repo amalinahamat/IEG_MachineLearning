@@ -277,6 +277,7 @@ character = chr(number)
 print(f"Character of ASCII value {number} is {character}")
 
 '''
+'''
 # I ASSESS
 # 1   
 
@@ -293,7 +294,36 @@ for char in word:
     #list_word.append(char.capitalize())
     print(char.capitalize())
 
+'''
+
 # 2
+last_int = int(input())
+times_count = int(input())
+
+count = 0
+while count < times_count:
+    list_first_prime = []
+    for num in range(2,last_int + 1):
+        for i in range(2,num):
+            if num % i == 0:
+                break
+        else:
+            list_first_prime.append(num)
+
+    print(list_first_prime)
+
+    total_sum = 0
+    for number in list_first_prime:
+        total_sum = total_sum + number
+    
+    last_int = total_sum
+    count += 1
+
+print(f"Sum:{total_sum}")
+
+
+
+
     
 
 
