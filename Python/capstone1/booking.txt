@@ -1,0 +1,5 @@
+PlatNo    | Customer  | StartRent  | EndRent 
+VDT 7458  |  De Gea   |            |
+ANP 0105  |  Ronaldo  |            |
+PKP 9903  |  Messi    |            |
+DCX 8085  |  Mbappe   |            |

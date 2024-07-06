@@ -73,15 +73,61 @@ else:
 # Parse and evaluate simple math word problems returning the answer as an integer.
 print(first = int("What is 5?")f"   -> {}") 
 
+import re
+
+def solve_math(question):
+
+    question = question.lower().strip().replace("?", "")
+
+    patterns = [
+        (r"what is (\d+)$", lambda x: int(x[0])),
+        (r"what is (\d+) plus (\d+)$", lambda x: int(x[0]) + int(x[1])),
+        (r"what is (\d+) minus (\d+)$", lambda x: int(x[0]) - int(x[1])),
+        (r"what is (\d+) multiplied by (\d+)$", lambda x: int(x[0]) * int(x[1])),
+        (r"what is (\d+) divided by (\d+)$", lambda x: int(x[0]) // int(x[1])),
+        (r"what is (\d+) plus (\d+) plus (\d+)$", lambda x: int(x[0]) + int(x[1]) + int(x[2])),
+        (r"what is (\d+) plus (\d+) multiplied by (\d+)$", lambda x: int(x[0]) + (int(x[1]) * int(x[2]))),
+    ]
+
+    for pattern , func in patterns:
+        match = re.match(pattern, question)
+        if match:
+            return func(match.groups())
+        
+    return "Sorry, i could not understand the problem"
+
+list_questions = ["What is 5?",
+                  "What is 5 plus 13?", 
+                  "What is 7 minus 5?", 
+                  "What is 6 multiplied by 4?", 
+                  "What is 25 divided by 5?", 
+                  "What is 5 plus 13 plus 6?", 
+                  "What is 3 plus 2 multiplied by 3?"]
+
+for question in list_questions:
+    print(f"{question} -> {solve_math(question)}")
+
 '''
+
+def band_color(color) : {
+    "black" : 0,
+    "brown" : 1,
+    "red"   : 2,
+    "orange": 3,
+    "yellow": 4,
+    "green" : 5,
+    "blue"  : 6,
+    "violet": 7,
+    "grey"  : 8,
+    "white" : 9
+}
 # 6
 # Write a Python class that has two methods: getString and printString , 
 # The getString accept a string from the user and printString prints the string in upper case.
 
 
-
-
-
+'''
+'''
 # 8
 # Write a Python class Inventory with attributes like id, productName, 
 # availableQuantity and price. Add methods like addItem, updateItem, 
