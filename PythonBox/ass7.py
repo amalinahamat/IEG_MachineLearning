@@ -108,7 +108,7 @@ for question in list_questions:
     print(f"{question} -> {solve_math(question)}")
 
 '''
-
+'''
 # 4
 
 def band_color() :
@@ -147,6 +147,47 @@ if len(list_user) == 2:
 else:
     resistance_value = (list_user[0] * 10) + list_user[1]
     print(f"the resistance value for {user_color} is {resistance_value}, ignoring after color 2.")
+
+'''
+# 5
+
+account_number = input("Enter credit card number\n").replace(" ", "")
+
+list_digit = []
+for number in str(account_number):
+    print(number)
+    list_digit.append(int(number))
+
+print(list_digit)
+
+each_digits = []
+for index in range(len(list_digit) -1, -1, -1):
+    digit = list_digit[index]
+    if (len(list_digit) - index) % 2 == 0:
+        double_digit = digit * 2
+        if double_digit > 9:
+            double_digit = (double_digit //10) + (double_digit % 10) 
+        each_digits.append(double_digit)
+    else:
+        each_digits.append(digit)
+
+each_digits.reverse()
+
+print(each_digits)
+
+total_sum = sum(each_digits)
+
+print(total_sum)
+
+if total_sum % 10 == 0:
+    print("This number is valid!")
+else:
+    print("This number is not valid!")
+
+
+
+
+
 # 6
 # Write a Python class that has two methods: getString and printString , 
 # The getString accept a string from the user and printString prints the string in upper case.
