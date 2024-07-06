@@ -1,4 +1,5 @@
 '''
+'''
 # 1 
 # A pangram is a sentence using every letter of the alphabet at least once. It is case insensitive, 
 # so it doesn't matter if a letter is lower-case (e.g. k) or upper-case (e.g. K).
@@ -35,6 +36,7 @@ if alphabets <= list_char:
     print("The sentences is a PANGRAM")
 else:
     print("The sentences is NOT PANGRAM")
+
 '''
 
 '''
@@ -66,12 +68,20 @@ if char_repeated:
 
 else:
     print(f"'{word}' is an isogram")
+
 '''
 '''
 
 # 3
 # Parse and evaluate simple math word problems returning the answer as an integer.
-print(first = int("What is 5?")f"   -> {}") 
+# What is 5?    -> 5
+# What is 5 plus 13?    -> 13
+# What is 7 minus 5?    -> 2
+# What is 6 multiplied by 4?     -> 24
+# What is 25 divided by 5?       -> 5
+# What is 5 plus 13 plus 6?      -> 24
+# What is 3 plus 2 multiplied by 3?       -> 15
+# print(first = int("What is 5?")f"   -> {}") 
 
 import re
 
@@ -110,6 +120,12 @@ for question in list_questions:
 '''
 '''
 # 4
+# The first 2 bands of a resistor have a simple encoding scheme: each color maps to a single number.
+# For example, if they printed a brown band (value 1) followed by a green band (value 5), 
+# it would translate to the number 15.
+# In this exercise you are going to create a helpful program so that you don't have to 
+# remember the values of the bands. The program will take color names as input and output a two digit number,
+# even if the input is more than two colors!
 
 def band_color() :
     return {
@@ -151,6 +167,11 @@ else:
 '''
 '''
 # 5
+# Your task is to Validate Credit Card Number
+# Given a number determine whether or not it is valid per the Luhn formula.
+# The Luhn algorithm is a simple checksum formula used to validate a variety of identification numbers,
+# such as credit card numbers and Canadian Social Insurance Numbers.
+# The task is to check if a given string is valid
 
 account_number = input("Enter credit card number\n").replace(" ", "")
 
@@ -278,7 +299,7 @@ for employee in employees:
     print (employee)
 
 '''
-'''
+
 '''
 # 8
 # Write a Python class Inventory with attributes like id, productName, 
@@ -286,7 +307,7 @@ for employee in employees:
 # and checkItem_details.
 # Use a dictionary to store the item details, where the key is the id 
 # and the value is a dictionary containing the productName, availableQuantity and price.
-'''
+
 class Inventory:
 
     item_details = \
@@ -469,6 +490,10 @@ else:
 '''
 
 # 9
+# Write a Python class BankAccount with attributes like accountNumber, 
+# openingBalance, currentBalance dateOfOpening and customerName. 
+# Add methods like deposit, withdraw, and checkBalance.
+
 from datetime import datetime
 
 class BankAccount:
@@ -539,8 +564,13 @@ for account in bank_accounts:
     print(account)
 
 '''
-
+'''
 # 10
+# Write a Python class to check the validity of a string of parentheses,
+# '(', ')', '{', '}', '[' and '].
+# These brackets must be closed in the correct order, for example
+# "()" and "()[]{}" are valid
+# "[)", "({[)]" and "{{{" are invalid
 
 class ValidParentheses:
     def __init__(self):
