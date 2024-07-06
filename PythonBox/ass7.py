@@ -208,6 +208,7 @@ s = String()
 s.getString()
 s.printString()
 '''
+'''
 # 7
 # Write a Python class Employee with properties id, name, salary, and department and 
 # methods like _init_ calculateSalary, assignDepartment and _str_.
@@ -276,6 +277,7 @@ print("\nAll Employees: ")
 for employee in employees:
     print (employee)
 
+'''
 '''
 '''
 # 8
@@ -464,6 +466,82 @@ else:
 
 
 '''
+
+# 9
+from datetime import datetime
+
+class BankAccount:
+    def __init__(self, accountNumber, openingBalance, dateOfOpening, customerName):
+        self.accountNumber = accountNumber
+        self.openingBalance = openingBalance
+        self.currentBalance = openingBalance
+        self.dateOfOpening = dateOfOpening if dateOfOpening else datetime.now().strftime('%Y-%m-%d')
+        self.customerName = customerName
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.currentBalance += amount
+            print(f"Deposited: {amount}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.currentBalance:
+            self.currentBalance -= amount
+            print(f"Withdrawn: {amount}")
+        elif amount > self.currentBalance:
+            print("Insufficient funds.")
+        else:
+            print("Withdrawal amount must be positive")
+
+    def checkBalance(self):
+        return self.currentBalance
+
+    def __str__(self):
+        return (f"Account Number: {self.accountNumber}\n"
+                f"Customer Name: {self.customerName}\n"
+                f"Opening Balance: {self.openingBalance}\n"
+                f"Current Balance: {self.currentBalance}\n"
+                f"Date of Opening: {self.dateOfOpening}")
+
+bank_accounts = []
+
+def add_bank_account():
+    accountNumber = input("Enter an account number: ")
+    openingBalance = float(input("Enter an opening balance: "))
+    dateOfOpening = input("Enter the date of opening (YYYY-MM-DD, leave empty for today): ")
+    customerName = input("Enter a customer name: ")
+
+    if dateOfOpening == "":
+        dateOfOpening = None
+
+    new_bank_account = BankAccount(accountNumber, openingBalance, dateOfOpening, customerName)
+    bank_accounts.append(new_bank_account)
+    print("\nNew Bank Account Details: ")
+    print(new_bank_account)
+
+add_bank_account()
+
+print("\nAll Bank Accounts: ")
+for account in bank_accounts:
+    print(account)
+
+if bank_accounts:
+    first_account = bank_accounts[0]
+    first_account.deposit(200)
+    print(f"Current Balance after deposit: {first_account.checkBalance()}")
+    first_account.withdraw(100)
+    print(f"Current Balance after withdrawal: {first_account.checkBalance()}")
+
+print("\nUpdated Account Details:")
+for account in bank_accounts:
+    print(account)
+
+
+
+# 10
+
+
 
 
 
