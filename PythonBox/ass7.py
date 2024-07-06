@@ -149,6 +149,7 @@ else:
     print(f"the resistance value for {user_color} is {resistance_value}, ignoring after color 2.")
 
 '''
+'''
 # 5
 
 account_number = input("Enter credit card number\n").replace(" ", "")
@@ -184,13 +185,28 @@ if total_sum % 10 == 0:
 else:
     print("This number is not valid!")
 
-
-
-
+'''
 
 # 6
 # Write a Python class that has two methods: getString and printString , 
 # The getString accept a string from the user and printString prints the string in upper case.
+
+class String:
+    def __init__ (self):
+        self.word = ""
+
+    def getString(self):
+        self.word = input("Enter a string: ")
+    
+    def printString(self):
+        self.word = self.word.upper()
+        print(self.word)
+    
+    
+s = String()
+s.getString()
+s.printString()
+
 
 
 '''
