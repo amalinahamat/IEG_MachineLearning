@@ -109,7 +109,10 @@ for question in list_questions:
 
 '''
 
-def band_color(color) : {
+# 4
+
+def band_color() :
+    return {
     "black" : 0,
     "brown" : 1,
     "red"   : 2,
@@ -121,6 +124,29 @@ def band_color(color) : {
     "grey"  : 8,
     "white" : 9
 }
+
+user_color = input("Please put the 2 band colors with - as separator: ")
+
+user_color_list = user_color.strip().lower().split("-")
+
+if len(user_color) < 2:
+    print ("Please provide at least 2 colors")
+else:
+    list_user = []
+    color_map = band_color()
+    for color in user_color_list:
+        if color in color_map:
+            list_user.append(color_map[color])
+        else:
+            print(f"Invalid color: {color}")
+            break
+
+if len(list_user) == 2:
+    resistance_value = (list_user[0] * 10) + list_user[1]
+    print(f"the resistance value for {user_color} is {resistance_value}.")
+else:
+    resistance_value = (list_user[0] * 10) + list_user[1]
+    print(f"the resistance value for {user_color} is {resistance_value}, ignoring after color 2.")
 # 6
 # Write a Python class that has two methods: getString and printString , 
 # The getString accept a string from the user and printString prints the string in upper case.
