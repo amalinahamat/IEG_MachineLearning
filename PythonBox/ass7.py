@@ -186,6 +186,7 @@ else:
     print("This number is not valid!")
 
 '''
+'''
 
 # 6
 # Write a Python class that has two methods: getString and printString , 
@@ -206,8 +207,74 @@ class String:
 s = String()
 s.getString()
 s.printString()
+'''
+# 7
+# Write a Python class Employee with properties id, name, salary, and department and 
+# methods like _init_ calculateSalary, assignDepartment and _str_.
+# "E7876", "ADAMS", 50000, "ACCOUNTING"
+# "E7499", "JONES", 45000, "RESEARCH"
+# "E7900", "MARTIN", 50000, "SALES"
+# "E7698", "SMITH", 55000, "OPERATIONS"
+
+class Employee:
+    def __init__(self,id_number,name,salary,department, hours_worked = 0):
+        self.id_number = id_number
+        self.name = name
+        self.salary = salary
+        self.department = department
+        self.hours_worked = hours_worked
+
+    def calculateSalary(self):
+        if self.hours_worked > 50:
+            overtime_hours = self.hours_worked - 50
+            overtime_amount = overtime_hours * (self.salary / 50)
+            total_salary = self.salary + overtime_amount
+
+        else:
+            total_salary = self.salary
+        return f"{total_salary:.2f}"
+
+    def assignDepartment(self, new_department):
+        self.department = new_department
+
+    def __str__(self):
+        return f"Employee : Id Number : {self.id_number}, Name : {self.name}, Salary : {self.calculateSalary()}, Department : {self.department}, Hours Worked : {self.hours_worked}"
 
 
+employee_data = [("E7876","ADAMS",50000,"ACCOUNTING", 55),
+                 ("E7499","JONES",45000,"RESEARCH", 48),
+                 ("E7900","MARTIN",50000,"SALES", 60),
+                 ("E7698","SMITH",55000,"OPERATIONS", 45)]
+
+
+
+employees = []
+
+for id_number,name,salary,department,hours_worked in employee_data:
+    employees.append(Employee(id_number, name, salary, department, hours_worked))
+
+def add_new_employee():
+    id_number = input("Enter the employee ID: ")
+    name = input("Enter the employee name: ")
+    salary = float(input("Enter the employee salary: "))
+    department = input("Enter the employee department: ")
+    hours_worked = int(input("Enter the number of hours worked: "))
+
+    new_employee = Employee(id_number, name, salary, department,hours_worked)
+    employees.append(new_employee)
+
+    print("\nNew Employee Details: ")
+    print(new_employee)
+    print(f"Calculated Salary (for {hours_worked} hours worked): {new_employee.calculateSalary()}")
+
+for employee in employees:
+    print (employee)
+
+add_new_employee()
+
+print("\nAll Employees: ")
+for employee in employees:
+    print (employee)
 
 '''
 '''
