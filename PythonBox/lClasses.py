@@ -613,9 +613,12 @@ d2=input("Enter the End time\n")
 cost=int(input("Enter the cost per day\n"))
 #Fill your code here
 
+d1 = datetime.datetime.strptime(d1,"%b %d %Y")
+d2 =  datetime.datetime.strptime(d2,"%b %d %Y")
 hall = Hall(d1,d2,cost)
+print(hall)
 
-from datetime import datetime
+
 class Hall:
     def __init__(self,start_date,end_date,cost_per_day):
         #Fill your code here
@@ -625,20 +628,106 @@ class Hall:
         
     def noDays(self):
         #Fill your code here
-        d = (self.end_date - self.start_date)
-        return d
+        return (self.end_date - self.start_date).days
 
-    def cost(self,d):
+    def cost(self):
 	#Fill your code here
-        amount = 1500
-        total_amount = d * amount 
-        return total_amount
+        total_days = self.noDays()
+        return total_days * self.cost_per_day
     
     def __str__(self):
-        return f"Total number of days {self.d}\nTotal cost {self.total_amount}"
+        total_days = self.noDays()
+        total_cost = self.cost()
+        return f"Total number of days {total_days}\nTotal cost {total_cost}"
 
 
+import datetime
+from Hall import Hall
+
+d1_str = input("Enter Start time (e.g., Jul 1 2014):\n")
+d2_str = input("Enter the End time (e.g., Jul 10 2014):\n")
+cost = int(input("Enter the cost per day:\n"))
+
+d1 = datetime.datetime.strptime(d1_str, "%b %d %Y")
+d2 = datetime.datetime.strptime(d2_str, "%b %d %Y")
+
+hall = Hall(d1, d2, cost)
+no_days = hall.no_days()  # Call no_days() method from Main class
+print(f"Number of days: {no_days}")  # Print number of days
+
+from datetime import timedelta
+
+class Hall:
+    def __init__(self, start_date, end_date, cost_per_day):
+        self.start_date = start_date
+        self.end_date = end_date
+        self.cost_per_day = cost_per_day
+        
+    def no_days(self):
+        return (self.end_date - self.start_date).days  # Calculate number of days
+    
+    def cost(self):
+        total_days = self.no_days()  # Call no_days() to get the number of days
+        return total_days * self.cost_per_day  # Calculate and return total cost
+
+    def __str__(self):
+        total_days = self.no_days()  # Call no_days() to get the number of days
+        total_cost = self.cost()  # Call cost() to get the total cost
+        return f"Total number of days: {total_days}\nTotal cost: {total_cost}"
 
 
-	
-	
+# 7
+from Student import Student
+
+u_id = int(input("Enter the student id\n"))
+username = input("Enter the student's username\n")
+password = input("Enter the password\n")
+name = input("Enter the name of the student\n")
+address = input("Enter the address\n")
+city = input("Enter the city\n")
+pincode = int(input("Enter the pincode\n"))
+contact_number = int(input("Enter the contact number\n"))
+email = input("Enter the email id\n")
+
+#Fill your code here
+
+student = Student(u_id,username,password,name,address,city,pincode,contact_number,email)
+print(student)
+
+
+class Student:
+    def __init__(self,__id,__username,__password,__name,__address,__city,__pincode,__contact_number,__email):
+        #Fill your code here
+        self.__id = __id
+        self.__username = __username
+        self.__password = __password
+        self.__name  = __name
+        self.__address = __address
+        self.__city = __city
+        self.__pincode = __pincode
+        self.__contact_number = __contact_number
+        self.__email = __email
+    def __str__(self):
+        # fill your code
+        return f"Id : {self.__id}\nUser Name : {self.__username}\nPassword : {self.__password}\nName : {self.__name}\nAddress : {self.__address}\ncity : {self.__city}\nPincode : {self.__pincode}\nContact Number : {self.__contact_number}\nemail : {self.__email}"
+    
+
+# 8
+
+class Employee:
+    def __init__(self,_name,_pay,_email):
+        self._name = _name
+        self._pay = _pay
+        self._email = _email
+
+   # @property
+
+class Developer(Employee):
+    def __init__(self, _prog_lang):
+        self._prog_lang = _prog_lang
+
+class Manager(Employee):
+    def __init__(self,_employees):
+        self._employees = _employees
+
+        
