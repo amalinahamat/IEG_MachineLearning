@@ -1,0 +1,1 @@
+Description | Environmental Condition | Date | Time | Status | Amount
