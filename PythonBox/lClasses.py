@@ -374,7 +374,32 @@ print(student_two.average())
 '''
 
 # video 9 oop inheritance and polymorphism
+
 '''
+class Student:
+    def __init__(self, name, school):
+        self.name = name
+        self.school = school
+        self.marks = []
+
+    def average(self):
+        return sum(self.marks) / len(self.marks)
+    
+class WorkingStudent:
+    def __init__(self,name,school,salary):
+        self.name = name
+        self.school = school
+        self.marks = []
+        self.salary = salary
+
+    def average(self):
+        return sum(self.marks) / len(self.marks)
+    
+rolf = WorkingStudent("Rolf", "MIT", 15.50)
+print(rolf.salary)
+
+
+
 
 '''
 class fruits:
@@ -539,6 +564,78 @@ person2 = Person.from_string(person_str)
 print("Person Details")
 print(person2)
 
+# 5
+'''
+
+from User import User
+
+print("Enter the details of User 1")
+name_1 = input("Name :\n")
+username_1 = input("Username :\n")
+pwd_1 = input("Password :\n")
+mobile_number_1 = int(input("Mobile Number :\n"))
+
+print("Enter the details of User 2")
+name_2 = input("Name :\n")
+username_2 = input("Username :\n")
+pwd_2 = input("Password :\n")
+mobile_number_2 = int(input("Mobile Number :\n"))
+
+#Fill your code here
+
+user1 = User(name_1, username_1, pwd_1, mobile_number_1)
+user2 = User(name_2, username_2, pwd_2, mobile_number_2)
+
+if user1 == user2:
+    print(f"User 1 and User 2 are equal ")
+else:
+    print(f"User 1 and User 2 are not equal")
+
+class User:
+    def __init__(self,name,username,password,mobile_number):
+        self.name = name
+        self.username = username
+        self.password = password
+        self.mobile_number = mobile_number
+
+    def __eq__(self,obj):
+	#Fill your code here
+        return self.mobile_number == obj.mobile_number
+'''
+
+# 6
+
+import datetime,time
+from Hall import Hall
+
+d1=input("Enter Start time\n")
+d2=input("Enter the End time\n")
+cost=int(input("Enter the cost per day\n"))
+#Fill your code here
+
+hall = Hall(d1,d2,cost)
+
+from datetime import datetime
+class Hall:
+    def __init__(self,start_date,end_date,cost_per_day):
+        #Fill your code here
+        self.start_date = start_date
+        self.end_date = end_date
+        self.cost_per_day = cost_per_day
+        
+    def noDays(self):
+        #Fill your code here
+        d = (self.end_date - self.start_date)
+        return d
+
+    def cost(self,d):
+	#Fill your code here
+        amount = 1500
+        total_amount = d * amount 
+        return total_amount
+    
+    def __str__(self):
+        return f"Total number of days {self.d}\nTotal cost {self.total_amount}"
 
 
 
