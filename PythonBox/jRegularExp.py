@@ -529,7 +529,13 @@ import re
 def caesar_cipher(words,next_shift):
     encrypted_text = ""
     for char in words:
-        encrypted_char = re.sub(r".", lambda x: chr((ord(x.group()) + next_shift) if (ord(x.group()) + next_shift) <= 127 else "invalid"), char)
+        shifted_char = ord(char) + next_shift
+        if shifted_char > 127:
+            encrypted_char = "invalid"
+            break
+        else:
+        #encrypted_char = re.sub(r".", lambda x: chr((ord(x.group()) + next_shift) if (ord(x.group()) + next_shift) <= 127 else "invalid"), char)
+            encrypted_char = chr(shifted_char)
         encrypted_text += encrypted_char
     
     return encrypted_text
@@ -539,6 +545,34 @@ next_shift = int(input().strip())
 
 encrypted_result = caesar_cipher(words,next_shift)
 
+print(encrypted_result)
+
+
+def caesar_cipher(words, next_shift):
+    encrypted_text = ""
+    invalid_found = False
+    
+    for char in words:
+        shifted_char = ord(char) + next_shift
+        
+        if shifted_char > 127:
+            if not invalid_found:
+                encrypted_text += "invalid"
+                invalid_found = True
+                break
+        else:
+            encrypted_text += chr(shifted_char)
+    
+    return encrypted_text
+
+# Reading input
+words = input().strip()
+next_shift = int(input().strip())
+
+# Encrypting using Caesar cipher
+encrypted_result = caesar_cipher(words, next_shift)
+
+# Output the encrypted result
 print(encrypted_result)
 
 
