@@ -295,6 +295,31 @@ for char in word:
     print(char.capitalize())
 
 '''
+import re 
+
+def encrypt(first_input, second_input):
+
+    separator = re.escape(second_input)
+
+    words = re.split(separator,first_input)
+
+    capitalized_word = []
+    for word in words:
+        capitalized_word.append(word.capitalize())
+
+    print("Strings after splitting")
+
+    for word in capitalized_word:
+        print(word)
+
+    
+
+first_input = input().strip()
+second_input = input().strip()
+
+encrypt(first_input, second_input)
+
+
 
 # 2
 last_int = int(input())

@@ -504,6 +504,45 @@ print(check_PAN(input_user))
 
 # 1
 
+import re
+
+def find_nouns(input_user):
+    pattern = r"\b[A-Z][a-zA-Z.]*\b"
+
+    nouns = re.findall(pattern, input_user)
+
+    return nouns
+
+
+input_user = input().strip()
+
+names = find_nouns(input_user)
+
+for name in names:
+    print(name)
+
+# 2
+
+
+import re
+
+def caesar_cipher(words,next_shift):
+    encrypted_text = ""
+    for char in words:
+        encrypted_char = re.sub(r".", lambda x: chr((ord(x.group()) + next_shift) if (ord(x.group()) + next_shift) <= 127 else "invalid"), char)
+        encrypted_text += encrypted_char
+    
+    return encrypted_text
+
+words = input().strip()
+next_shift = int(input().strip())
+
+encrypted_result = caesar_cipher(words,next_shift)
+
+print(encrypted_result)
+
+
+
 
 
 
