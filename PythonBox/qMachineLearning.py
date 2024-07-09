@@ -73,3 +73,17 @@ big data - data warehouse, data lakes
 '''
 
 # 12 bias and variance
+
+
+# i design 
+# 1
+
+import numpy as np
+
+start_number = int(input("Enter Starting Number:\n"))
+end_number = int(input("Enter Ending Number:\n"))
+
+arr = np.arange(start_number,end_number + 1)
+print("Array")
+print(arr)
+
