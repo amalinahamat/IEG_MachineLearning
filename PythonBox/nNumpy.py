@@ -154,3 +154,42 @@ print(intersection_array)
 print("Difference Array")
 print(difference_array)
 
+# i Assess
+# 1
+
+import numpy as np
+
+arr_1 = np.arange(0,100)
+print("Array 1")
+print(arr_1)
+
+arr_2 = np.arange(2000, 10000, 100)
+print("Array 2")
+print(arr_2)
+
+# 2
+
+import numpy as np
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+feature_names = iris.feature_names
+target_names = iris.target_names
+feature_matrix = iris.data
+target_vector = iris.target
+
+print("Iris Feature Names")
+print(feature_names)
+print("Iris Target Names")
+print(target_names)
+print("Iris Feature Matrix")
+print(feature_matrix[:5])
+print("Iris Target Vector")
+print(target_vector[:5])
+
+print("Type of Iris Feature Matrix")
+print(str(type(feature_matrix)).replace("<","").replace(">",""))
+print("Type of Iris Target Vector")
+print(str(type(target_vector)).replace("<","").replace(">",""))
+
