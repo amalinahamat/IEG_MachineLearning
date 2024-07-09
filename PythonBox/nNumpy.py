@@ -120,32 +120,37 @@ print("2-D Array")
 print(arr_2d)
 
 # 8
+import numpy as np
 
 size_1st = int(input("Enter the size of 1st array\n"))
 
 list_element_1st = []
 print("Enter the elements of first array")
 for size in range(size_1st):
-    element_1st = int(input())
+    element_1st = float(input())
     list_element_1st.append(element_1st)
 
 size_2nd = int(input("Enter the size of 2nd array\n"))
 
 list_element_2nd = []
 print("Enter the elements of second array\n")
-for size in range(size_1st):
-    element_2nd = int(input())
+for size in range(size_2nd):
+    element_2nd = float(input())
     list_element_2nd.append(element_2nd)
 
 arr_1 = np.array(list_element_1st)
 arr_2 = np.array(list_element_2nd)
 
+union_array = np.union1d(arr_1, arr_2)
+intersection_array = np.intersect1d(arr_1,arr_2)
+difference_array = np.setdiff1d(arr_1, arr_2)
+
 print("Union Array")
-print(arr_1.union(arr_2))
+print(union_array)
 
 print("Intersection Array")
-print(arr_1.intersection(arr_2))
+print(intersection_array)
 
 print("Difference Array")
-print(arr_1.difference(arr_2))
+print(difference_array)
 
