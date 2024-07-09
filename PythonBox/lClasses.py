@@ -925,7 +925,7 @@ class CalAreaSquare(Shape):
 
     def area(self):
         #find the square are
-        return float(self.side * self.side)
+        return self.side ** 2
         
 class CalAreaRectangle(Shape):
     def __init__(self,length,width):
@@ -934,7 +934,7 @@ class CalAreaRectangle(Shape):
 
     def area(self):
         #find the square area
-        return int(self.length * self.width)
+        return self.length * self.width
 
 class CalAreaTriangle(Shape):
     def __init__(self,base,height):
@@ -943,7 +943,7 @@ class CalAreaTriangle(Shape):
         
     def area(self):
         #find the triangle area
-        return float(0.5 * self.base * self.height)
+        return 0.5 * self.base * self.height
 
 class CalAreaCircle(Shape):
     def __init__(self,radius):
@@ -951,7 +951,7 @@ class CalAreaCircle(Shape):
         
     def area(self):
         #find the circle area
-        return float(3.14 * self.radius * self.radius)
+        return 3.14 * (self.radius ** 2)
      
     
 print("Select an Option")
@@ -1026,145 +1026,48 @@ else:
 
 class Shape:
     def area(self):
-        pass
-
-class CalAreaSquare(Shape):
-    def __init__(self, side):
-        self.side = side
-    
-    def area(self):
-        return self.side * self.side
-
-class CalAreaRectangle(Shape):
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
-    
-    def area(self):
-        return self.length * self.width
-
-class CalAreaTriangle(Shape):
-    def __init__(self, base, height):
-        self.base = base
-        self.height = height
-    
-    def area(self):
-        return 0.5 * self.base * self.height
-
-class CalAreaCircle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-    
-    def area(self):
-        return 3.14 * self.radius * self.radius
-
-print("Select an Option")
-print("1.Square")
-print("2.Rectangle")
-print("3.Triangle")
-print("4.Circle")
-
-try:
-    choice = int(input())
-    
-    if choice == 1:
-        while True:
-            try:
-                side = int(input("Enter the length\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        square = CalAreaSquare(side)
-        print(f"Area of Square : {square.area():.2f}")
-    
-    elif choice == 2:
-        while True:
-            try:
-                length = int(input("Enter the length\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        while True:
-            try:
-                breadth = int(input("Enter the breadth\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        rectangle = CalAreaRectangle(length,breadth)
-        print(f"Length of Rectangle : {length}")
-        print(f"Breadth of Rectangle : {breadth}")
-        print(f"Area of Rectangle : {(rectangle.area())}")
-    
-    elif choice == 3:
-        while True:
-            try:
-                base = int(input("Enter the base\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        while True:
-            try:
-                height = int(input("Enter the height\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        triangle = CalAreaTriangle(base,height)
-        print(f"Base of Triangle : {base}")
-        print(f"Height of Triangle : {height}")
-        print(f"Area of Triangle : {triangle.area():.2f}")
-    
-    elif choice == 4:
-        while True:
-            try:
-                radius = int(input("Enter the radius\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter an integer.")
-        circle = CalAreaCircle(radius)
-        print(f"Radius of Circle : {radius}")
-        print(f"Area of Circle : {circle.area():.2f}")
-    
-    else:
-        raise ValueError("Invalid choice. Please enter 1, 2, 3, or 4")
-
-except ValueError as ve:
-    print(ve)
-
-
-
-class Shape:
-    def area(self):
         raise NotImplementedError("Subclasses should implement this method.")
 
 class CalAreaSquare(Shape):
-    def __init__(self, side):
+    def __init__(self,side):
         self.side = side
-    
-    def area(self):
-        return int(self.side) * int(self.side)
 
-class CalAreaRectangle(Shape):
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
-    
     def area(self):
-        return int(self.length) * int(self.width)
+        #find the square are
+        print("Length of Square :", self.side)
+        return self.side ** 2
+        
+class CalAreaRectangle(Shape):
+    def __init__(self,length,breadth):
+        self.length = length
+        self.breadth = breadth
+
+    def area(self):
+        #find the square area
+        print("Length of Rectangle :", self.length)
+        print("Breadth of Rectangle :", self.breadth)
+        return self.length * self.breadth
 
 class CalAreaTriangle(Shape):
-    def __init__(self, base, height):
+    def __init__(self,base,height):
         self.base = base
         self.height = height
-    
+        
     def area(self):
-        return 0.5 * int(self.base) *int(self.height)
+        #find the triangle area
+        print("Base of Triangle :", self.base)
+        print("Height of Triangle :", self.height)
+        return 0.5 * self.base * self.height
 
 class CalAreaCircle(Shape):
-    def __init__(self, radius):
+    def __init__(self,radius):
         self.radius = radius
-    
+        
     def area(self):
-        return 3.14 * int(self.radius) *int( self.radius)
+        #find the circle area
+        print("Radius of Circle :", self.radius)
+        return 3.14 * (self.radius ** 2)
+
 
 print("Select an Option")
 print("1.Square")
@@ -1172,71 +1075,76 @@ print("2.Rectangle")
 print("3.Triangle")
 print("4.Circle")
 
-try:
-    choice = int(input())
-    
-    if choice == 1:
-        while True:
-            try:
-                side = int(input("Enter the length\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        square = CalAreaSquare(side)
-        print(f"Area of Square : {square.area():.2f}")
-    
-    elif choice == 2:
-        while True:
-            try:
-                length = int(input("Enter the length\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        while True:
-            try:
-                breadth = int(input("Enter the breadth\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        rectangle = CalAreaRectangle(length,breadth)
-        print(f"Length of Rectangle : {length}")
-        print(f"Breadth of Rectangle : {breadth}")
-        print(f"Area of Rectangle : {int(rectangle.area())}")
-    
-    elif choice == 3:
-        while True:
-            try:
-                base = int(input("Enter the base\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        while True:
-            try:
-                height = int(input("Enter the height\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        triangle = CalAreaTriangle(base,height)
-        print(f"Base of Triangle : {base}")
-        print(f"Height of Triangle : {height}")
-        print(f"Area of Triangle : {triangle.area():.2f}")
-    
-    elif choice == 4:
-        while True:
-            try:
-                radius = int(input("Enter the radius\n"))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a number.")
-        circle = CalAreaCircle(radius)
-        print(f"Radius of Circle : {radius}")
-        print(f"Area of Circle : {circle.area():.2f}")
-    
-    else:
-        raise ValueError("Invalid choice. Please enter 1, 2, 3, or 4")
 
-except ValueError as ve:
-    print(ve)
+choice = int(input())
+    
+if choice == 1:
+    side = int(input("Enter the length\n"))
+    square = CalAreaSquare(side)
+    print(f"Area of Square :", square.area())
+    
+elif choice == 2:
+    length = int(input("Enter the length\n"))
+    breadth = int(input("Enter the breadth\n"))
+    rectangle = CalAreaRectangle(length,breadth)
+    print(f"Area of Rectangle :", rectangle.area())
+    
+elif choice == 3:
+    base = int(input("Enter the base\n"))
+    height = int(input("Enter the height\n"))
+    triangle = CalAreaTriangle(base,height)
+    print(f"Area of Triangle : {triangle.area():.2f}")
+    
+elif choice == 4:
+    radius = int(input("Enter the radius\n"))
+    circle = CalAreaCircle(radius)
+    print(f"Area of Circle : {circle.area():.2f}")
+
+else:
+    print("Invalid option")
+
+
+# 2
+
+class Student:
+    def __init__(self,id,name,department,courseId):
+        self.id = id
+        self.name = name
+        self.department = department
+        self.courseId = courseId
+
+    def __str__(self):
+        return f"Student :\nId : {self.id}\nName : {self.name}\nDepartment : {self.department}\nCourse Id : {self.courseId}"
+
+
+
+
+class StudentRating(Student):
+    def __init__(self,id,review,stars,student):
+        super().__init__(student.id, student.name, student.department, student.courseId)
+        self.rating_id = id
+        self.review = review
+        self.stars = stars
+    
+    def __str__(self):
+        return f"{super().__str__()}\nRating ID : {self.rating_id}\nReview : {self.review}\nRating Stars : {self.stars}"
+
+
+student_id = int(input("Enter the student id\n"))
+student_name =  input("Enter the student name\n")
+student_department = input("Enter the department\n")
+student_course_id = int(input("Enter the course id\n"))
+
+student = Student(student_id, student_name, student_department, student_course_id)
+
+student_rating_id = int(input("Enter the Rating id\n"))
+student_review = input("Enter review\n")
+student_stars = int(input("Enter number of stars\n"))
+student_rating = StudentRating(student_rating_id,student_review,student_stars,student)
+
+print(student_rating)
+
+
 
     
         
