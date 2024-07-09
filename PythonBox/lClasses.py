@@ -666,14 +666,14 @@ class Hall:
     def no_days(self):
         return (self.end_date - self.start_date).days  # Calculate number of days
     
-    def cost(self):
-        total_days = self.no_days()  # Call no_days() to get the number of days
-        return total_days * self.cost_per_day  # Calculate and return total cost
+    def cost(self,d):
+        d = self.no_days()  # Call no_days() to get the number of days
+        return d * self.cost_per_day  # Calculate and return total cost
 
     def __str__(self):
-        total_days = self.no_days()  # Call no_days() to get the number of days
+        d = self.no_days()  # Call no_days() to get the number of days
         total_cost = self.cost()  # Call cost() to get the total cost
-        return f"Total number of days: {total_days}\nTotal cost: {total_cost}"
+        return f"Total number of days: {d}\nTotal cost: {total_cost}"
 
 
 # 7
@@ -832,11 +832,169 @@ class Employee:
         #Fill your code
         return f"Name: {self._name}, Pay: {self._pay}, Email: {self._email}"
         
-    
-    
-    
+# 9
+
+class College:
+    def __init__(self):
+        self.Id = None
+        self.name = None
+        self.city = None
+        self.state = None
+        self.pincode = None
+        self.contact_number = None
+        self.email = None 
+
+    def __str__(self,choice):
+        if choice == 1:
+            return f"id : {self.Id}\nName : {self.name}\nCity : {self.city}\nState : {self.state}\nPincode : {self.pincode}"
+        elif choice == 2:
+            return f"Name : {self.name}\nContact Number : {self.contact_number}\nEmail : {self.email}"
+        else:
+            return "Invalid choice"
+
+
+print("1. Enter College address and Display")
+print("2. Enter  the contact details and Display")
+print("3. exit")
+
+while True:
+    choice = int(input("Enter your choice\n"))
+
+    college = College()
+
+    if choice == 1:
+        college.Id = input("Enter the College id\n")
+        college.name = input("Enter the College name\n")
+        college.city = input("Enter the City\n")
+        college.state = input("Enter the State\n")
+        college.pincode = input("Enter the Pincode\n")
+        print(college.__str__(1))
+    elif choice == 2:
+        college.name = input("Enter the name of the College\n")
+        college.contact_number = input("Enter the contact number\n")
+        college.email = input("Enter the email id\n")
+        print(college.__str__(2))
+    elif choice == 3:
+        #print("Exiting...") 
+        break
+    else:
+        print("Invalid choice. Please enter 1,2, or 3")  
+
+# 10
+
+class Person:
+    def __init__(self,person_first_name,person_last_name,person_age):
+        self._first_name = person_first_name
+        self._last_name = person_last_name
+        self._age = person_age
+        self._email = f"{person_first_name}.{person_last_name}@gmail.com"
+
+    def fullname(self):
+        return f"{self._first_name} {self._last_name}"
+
+    def __str__(self):
+        return f"{self.fullname()} is {self._age} years old and her email id is {self._email}"
+
+
+
+person = Person()
+
+person_first_name = input("Enter first name\n")
+person_last_name = input("Enter last name\n")
+person_age = input("Enter age\n")
+person = Person(person_first_name, person_last_name, person_age)
+print("Full name of the person is ",person.fullname())
+print("Person Details")
+print(person)
+
+
+# i assess 
+# 1
+
+import math 
+
+class Shape:
+    def area(self):
+        raise NotImplementedError("Subclasses should implement this method.")
+
+
+class CalAreaSquare(Shape):
+    def __init__(self,side):
+        self.side = side
+
+    def area(self):
+        #find the square are
+        return self.side * self.side
         
+
+class CalAreaRectangle(Shape):
+    def __init__(self,length,width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        #find the square area
+        return self.length * self.width
+
+class CalAreaTriangle(Shape):
+    def __init__(self,base,height):
+        self.base = base
+        self.height = height
         
+    def area(self):
+        #find the triangle area
+        return 0.5 * self.base * self.height
+
+class CalAreaCircle(Shape):
+    def __init__(self,radius):
+        self.radius = radius
+        
+    def area(self):
+        #find the circle area
+        return 3.14 * self.radius * self.radius
+     
+    
+print("Select an Option")
+print("1.Square")
+print("2.Rectangle")
+print("3.Triangle")
+print("4.Circle")
+
+choice = int(input())
+
+if choice == 1:
+    side = float(input("Enter the length\n"))
+    square = CalAreaSquare(side)
+    print(f"Area of Square : {square.area():.2f}")
+
+elif choice == 2:
+    length = float(input("Enter the length\n"))
+    breadth = float(input("Enter the breadth\n"))
+    rectangle = CalAreaRectangle(length,breadth)
+    print(f"Length of Rectangle : {length:.0f}")
+    print(f"Breadth of Rectangle : {breadth:.0f}")
+    print(f"Area of Rectangle : {rectangle.area():.0f}")
+
+elif choice == 3:
+    base = float(input("Enter the base\n"))
+    height = float(input("Enter the height\n"))
+    triangle = CalAreaTriangle(base,height)
+    print(f"Base of Triangle : {base:.0f}")
+    print(f"Height of Triangle : {height:.0f}")
+    print(f"Area of Triangle : {triangle.area():.2f}")
+
+elif choice == 4:
+    radius = float(input("Enter the radius\n"))
+    circle = CalAreaCircle(radius)
+    print(f"Radius of Circle : {radius:.0f}")
+    print(f"Area of Circle : {circle.area():.2f}")
+else:
+    print("Invalid choice. Please enter 1,2,3,4")  
+
+# 2
+
+
+
 		
 
     
