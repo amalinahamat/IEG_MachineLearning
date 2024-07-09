@@ -87,3 +87,18 @@ arr = np.arange(start_number,end_number + 1)
 print("Array")
 print(arr)
 
+# 2
+
+import pandas as pd
+
+data = pd.read_csv("training_data.csv")
+
+no_duplicate_data = data.drop_duplicates()
+
+print("Dataset after removing duplicate rows:")
+print(no_duplicate_data)
+
+no_single_value_columns = no_duplicate_data.loc[:, no_duplicate_data.nunique() > 1]
+
+print("\nDataset after removing columns with a single value:")
+print(no_single_value_columns)
