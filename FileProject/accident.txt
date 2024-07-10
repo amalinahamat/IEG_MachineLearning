@@ -1,0 +1,12 @@
+Plate No | Description | Environmental Condition | Date | Time | Status | Amount
+VDT 7458 | Extreme | Slippery road | 4/4/2022 | 4.45pm | unpaid | 14000
+ANP 0105 | Light | Bumpy road | 12/11/2023 | 5.45pm | paid | 24000
+ANP 0105 | Light | Bumpy road | 12/8/2023 | 5.45am | unpaid | 34000
+VYZ 9012 | Light | Bumpy road | 6/2/2024 | 12.45pm | paid | Done
+ANP 0105 | Light | Bumpy road | 12/11/2023 | 1.05pm | paid | 34000
+VDT 7458 | Extreme | Slippery road | 4/4/2023 | 4.45pm | unpaid | 14000
+ANP 0105 | Light | Bumpy road | 12/11/2021 | 8.45pm | paid | 34000
+ANP 0105 | Light | Bumpy road | 12/1/2023 | 11.45am | unpaid | 56000
+NEW 1234 | Moderate | Rainy | 20/12/2023 | 7.00am | paid | 0
+ABC 5678 | Extreme | Rainy | 15/10/2023 | 9.15am | unpaid | 18000
+ABC 5678 | Extreme | Rainy | 15/10/2023 | 9.15am | paid | 18000

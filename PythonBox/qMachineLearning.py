@@ -102,3 +102,33 @@ no_single_value_columns = no_duplicate_data.loc[:, no_duplicate_data.nunique() >
 
 print("\nDataset after removing columns with a single value:")
 print(no_single_value_columns)
+
+# 3
+
+import pandas as pd
+
+data = pd.read_csv("dataset.csv")
+
+total_records = len(data)
+
+count_golf = len(data[data["recreation"] == "golf"])
+unconditional_prob_golf = count_golf / total_records
+
+count_medRisk = len(data[data["credit_worthiness"] == "medRisk"])
+count_single_and_medrisk = len(data[(data["credit_worthiness"] == "medRisk") & (data["status"] == "single")])
+conditional_prob_single_given_medRisk = count_single_and_medrisk / count_medRisk
+
+print(f"Unconditional probability of golf: = {unconditional_prob_golf:.2f}")
+print(f"Conditional probability of single given medRisk: = {conditional_prob_single_given_medRisk:.2f}")
+
+# 4
+
+import pandas as pd
+import seaborn as sns
+import matplotplib.pyplot as plt
+
+df = pd.read_csv("vehicle_data_1.csv")
+
+print("DF Shape")
+
+
