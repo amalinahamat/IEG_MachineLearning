@@ -92,27 +92,32 @@ plt.savefig('plot7.png')
 
 # 4
 
-
+import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
 
 # Read the csv file
-data = sns.load_dataset('tips')
+data = pd.read_csv('Medals.csv')
+
+df = pd.DataFrame(data)
 
 # Create a scatter 
-sns.barplot(x = "day", y = "total_bill", data = data , palette = "PuRd", ci = None)
+plt.scatter(df["Rank"], df["Rank_by_Total"], label = "Rank Comparison", color = "b", marker = "o")
 
 # Set the x-axis label
-plt.xlabel('Day')
+plt.xlabel('Rank')
 
 # Set the y-axis label
-plt.ylabel('Total Bill')
+plt.ylabel('Rank_by_Total')
 
 # Set the title
-plt.title('Total Bill by Day')
+plt.title('Rank Comparison')
+
+# Set the legend location
+plt.legend(loc='upper left')
 
 # Save the plot to a file
-plt.savefig('splot3.png')
+plt.savefig('plot4.png')
 
 # 5
 
@@ -120,19 +125,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Read the csv file
-data = sns.load_dataset('tips')
+data = sns.load_dataset('tips’, cache=True, data_home='\temp')
 
 # Create a scatter 
 sns.barplot(x = "day", y = "total_bill", data = data , palette = "PuRd", ci = None)
 
 # Set the x-axis label
-plt.xlabel('Day')
+plt.xlabel('day')
 
 # Set the y-axis label
-plt.ylabel('Total Bill')
+plt.ylabel('total_bill')
 
 # Set the title
-plt.title('Total Bill by Day')
+#plt.title('Total Bill by Day')
 
 # Save the plot to a file
 plt.savefig('splot3.png')
