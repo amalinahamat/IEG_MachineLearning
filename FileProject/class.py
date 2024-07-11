@@ -1,13 +1,6 @@
 from os.path import exists
 from datetime import datetime
 
-# 1. InputHandler Class
-# This class handles user input, ensuring the data is valid and correctly formatted.
-
-# keyboard_input: Handles generic input and ensures it matches the expected datatype. If a default value is provided, it uses this value when the user inputs an empty string.
-# date_input: Ensures the date input is in the "DD/MM/YYYY" format and handles validation.
-# time_input: Ensures the time input is in the "12-Hour format" (like "9:35pm") and handles validation.
-
 class InputHandler:
 
     # Function to handle generic keyboard input with validation
@@ -31,7 +24,6 @@ class InputHandler:
             else:
                 isInvalid = False
         return value
-    
 
     # Function to handle date input with validation
     @staticmethod
@@ -50,7 +42,6 @@ class InputHandler:
                 isInvalid = False
         return value
 
-
     # Function to handle time input with validation
     @staticmethod
     def time_input(caption, errorMessage, defaultValue=None):
@@ -68,15 +59,7 @@ class InputHandler:
                 isInvalid = False
         return value
 
-
-# 2. FileManager Class
-# This class handles file creation and writing headers.
-
-# createFile: Checks if the file exists; if not, it creates the file and adds a header.
-# createTitle: Writes a header to the file, containing column titles for the accident report.
-    
 class FileManager:
-
     # Function to create a file if it doesn't exist   
     @staticmethod         
     def createFile(accident_file):
@@ -87,7 +70,6 @@ class FileManager:
             except Exception as e:
                 print("Something went wrong when creating the file:", e)
 
-
     # Function to create the title/header in the file
     @staticmethod
     def createTitle(accident_file):
@@ -97,29 +79,20 @@ class FileManager:
         except Exception as e:
             print("Something went wrong when we create the header:", e)   
 
-
-# 3. AccidentReport Class
-# This is the main class that manages the menu, displaying options, and handling operations like reporting accidents, listing reports, deleting reports, and handling damage claims.
-
 class AccidentReport:
-
-    # init: Initializes the class with filenames for cars, bookings, and accident reports. It also ensures the accident file exists by creating it if necessary.
     def __init__(self, cars_file, booking_file, accident_file):
         self.cars_file = cars_file
         self.booking_file = booking_file
         self.accident_file = accident_file
         FileManager.createFile(self.accident_file)
         
-    # Prints text centered within a given width.    
     def print_centered(self,text, width):
         print(text.center(width))
 
-    # Prints colored text centered within a given width
     def print_colored_centered(self,text, color_code, width):
         print(f"\033[{color_code}m{text.center(width)}\033[0m")
 
     # Main menu function
-    # Displays the main menu with options for reporting an accident, listing reports, deleting a report, and managing damage claims. It handles user input to navigate to the appropriate functionality.
     def display_menu(self):
         choice = -1
         while (choice != 0):
@@ -145,8 +118,8 @@ class AccidentReport:
                 self.deleteReport()
             elif (choice == 4):
                 self.printDamageClaims()
+            
 
-    # Filters cars based on their status (active, inactive, or all).
     def filter_cars(self,lines, status_filter):
         filtered_lines = []
         for index, line in enumerate(lines):
@@ -163,10 +136,7 @@ class AccidentReport:
         return filtered_lines
 
     # Function to select a car from the list
-    # Displays the list of cars and allows the user to select one. It then displays bookings related to the selected car and allows the user to choose a booking for accident reporting.
     def selectCar(self):
-
-        width = 150
         try:
             with open(self.cars_file, "rt") as filehandler:
                 lines = filehandler.readlines()
@@ -181,19 +151,15 @@ class AccidentReport:
             filtered_lines = self.filter_cars(lines, status_choice.lower())
 
             print("\nSelect a car from the list:")
-
             for index, line in enumerate(filtered_lines):
                 platNo, modelCar, nameCar, colorCar, statusCar = line.strip().split(" | ")
                 if index == 0:
-                    header = f"{'No.':<8}{platNo:<15}{modelCar:<15}{nameCar:<15}{colorCar:<15}{statusCar:<10}"
-                    self.print_colored_centered(header, "1;34", width)  # Blue color for header
-                    self.print_colored_centered("="*width, "1;34", width)  # Blue color for separator   
+                    print(f"{'No.':<5}{platNo:<10}{modelCar:<10}{nameCar:<10}{colorCar:<10}{statusCar:<10}")
+                    print("="*50)
                 else:
-                    car_details = f"{index:<8}{platNo:<15}{modelCar:<15}{nameCar:<15}{colorCar:<15}{statusCar:<10}"
-                    self.print_colored_centered(car_details, "1;32", width)  # Green color for car details
+                    print(f"{index:<5}{platNo:<10}{modelCar:<10}{nameCar:<10}{colorCar:<10}{statusCar:<10}")
 
             choice = InputHandler.keyboard_input(int, "\nEnter the number of the car: ", "Choice must be an integer.")
-
             if choice < 1 or choice >= len(filtered_lines):
                 print("Invalid choice, please select a valid car number.")
                 return self.selectCar()
@@ -203,14 +169,10 @@ class AccidentReport:
 
                 with open(self.booking_file, "rt") as booking_filehandler:
                     booking_lines = booking_filehandler.readlines()
-
                 print("\nBooking Details:")
-
                 bookingRelated = [line.strip() for line in booking_lines if line.startswith(selected_car)]
                 for booking_index, booking_line in enumerate(bookingRelated):
-                    booking_details = f"{booking_index + 1}. {booking_line}"
-                    self.print_colored_centered(booking_details, "1;36", width)  # Cyan color for booking details
-
+                    print(f"{booking_index + 1}. {booking_line}")
 
                 if bookingRelated:
                     booking_choice = InputHandler.keyboard_input(int, "\nEnter the number of the booking: ", "Choice must be an integer.")
@@ -228,9 +190,7 @@ class AccidentReport:
             return None
         
     # Function to create an accident report
-    # Collects accident details from the user and validates that the accident date is within the booking period. It then appends the report to the accident file.
     def accidentReport(self,car_choice, selected_booking):
-
         try:
             car_platNo, _, startRent, endRent = selected_booking.split(" | ")
 
@@ -256,56 +216,34 @@ class AccidentReport:
             print("Something went wrong when we append the accident report:", e)
         
     # Function to print accident reports
-    # Reads and displays accident reports from the accident file
     def printReport(self):
-        width = 150  # Set the width of the console display
-
-        try:
-            with open(self.accident_file, "rt") as filehandler:
-                lines = filehandler.readlines()
-            print("\n\n")
-            
-            # Header
-            header = f"{'No.':<8}{'Car Detail':<15}{'Description':<20}{'Environment':<20}{'Date':<15}{'Time':<15}{'Status':<20}{'Amount':<19}"
-            self.print_colored_centered(header, "1;34", width)  # Blue color for header
-            self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
-
-            for index, line in enumerate(lines):
-                car_detail, description, environment, date, time, status, amount = line.strip().split(" | ")
-                if index == 0:
-                    continue  # Skip the header row in the file
-                else:
-                    report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
-                    self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
-            print("\n\n")
-
-        except Exception as e:
-            print("Something went wrong when we print the description:", e)
-
-
-    # Function to delete an accident report
-    # Reads and displays accident reports, allows the user to select one, and deletes the selected report.
-    def deleteReport(self):
-        width = 150
         try:
             with open (self.accident_file, "rt") as filehandler:
                 lines = filehandler.readlines()
-
-            # Header
-            header = f"{'No.':<8}{'Car Detail':<15}{'Description':<20}{'Environment':<20}{'Date':<15}{'Time':<15}{'Status':<20}{'Amount':<19}"
-            self.print_colored_centered(header, "1;34", width)  # Blue color for header
-            self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
-
             for index, line in enumerate(lines):
                     car_detail,description, environment, date, time, status, amount = line.strip().split(" | ")
                     if (index == 0):
-                        continue
+                        print(f"{'No.':5}{car_detail:15}{description:20}{environment:>20}{date:>15}{time:>15}{status:>20}{amount:>19}")
+                        print("=" * 138)
                     else:
-                        report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
-                        self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+                        print(f"{index:<5}{car_detail:15}{description:20}{environment:>15}{str(date):>25}{str(time):>15}{str(status):>20}{str(amount):>19}")
+        except Exception as e:
+            print ("Something went wrong when we print the description:", e)
+
+    # Function to delete an accident report
+    def deleteReport(self):
+        try:
+            with open (self.accident_file, "rt") as filehandler:
+                lines = filehandler.readlines()
+            for index, line in enumerate(lines):
+                    car_detail,description, environment, date, time, status, amount = line.strip().split(" | ")
+                    if (index == 0):
+                        print(f"{'No.':5}{car_detail:15}{description:20}{environment:>20}{date:>15}{time:>15}{status:>20}{amount:>19}")
+                        print("=" * 138)
+                    else:
+                        print(f"{index:<5}{car_detail:15}{description:20}{environment:>15}{str(date):>25}{str(time):>15}{str(status):>20}{str(amount):>19}")
 
             choice = InputHandler.keyboard_input(int, "Enter the number of the report to delete: ", "Choice must be an integer.")
-
             if 1 <= choice <= len(lines) - 1:
                 lines.pop(choice)  # Remove the selected report
                 
@@ -321,7 +259,6 @@ class AccidentReport:
         except Exception as e:
             print("Something went wrong when deleting the report:", e)
 
-    # Filters damage claims based on their status (paid, unpaid, or all).
     def filter_claims(self, lines, status_filter):
         filtered_lines = []
         for index, line in enumerate(lines):
@@ -339,10 +276,7 @@ class AccidentReport:
 
 
     # Function to print damage claims
-    # Displays damage claims based on the filter and allows the user to change the status of a claim to 'paid'.
     def printDamageClaims(self):
-        width = 150
-
         try:
             with open(self.accident_file, 'rt') as filehandler:
                 accidentlines = filehandler.readlines()
@@ -360,12 +294,10 @@ class AccidentReport:
             for index, line in enumerate(filtered_claims):
                 car_details, description, environment, date, time, status, amount = line.strip().split(" | ")
                 if index == 0:
-                    header = f"{'No.':<8}{'Car Details':<15}{'Amount':<10}{'Status':<10}"
-                    self.print_colored_centered(header, "1;34", width)  # Blue color for header
-                    self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
+                    print(f"{'No.':<5}{car_details:<10}{amount:<10}{status:<11}")
+                    print("="*35)
                 else:
-                    report_line = f"{index:<8}{car_details:<15}{amount:<10}{status:<10}"
-                    self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+                    print(f"{index:<5}{car_details:<10}{amount:<10}{status:<10}")
 
             status_choice = InputHandler.keyboard_input(str, "Do you want to continue for payment claims? [y/n]: ", "Response must be a string")
             if status_choice.lower() == 'y':
@@ -379,17 +311,13 @@ class AccidentReport:
 
         return
 
-    # Updates the status of a selected claim to 'paid' and writes the updated data back to the accident file.
     def changeStatus(self, filtered_claims):
-
-        width = 150
         try:
             with open(self.accident_file, "rt") as filehandler:
                 lines = filehandler.readlines()
             data = [line.strip().split(" | ") for line in lines]
 
             index_choice = InputHandler.keyboard_input(int, "Enter the number from the list: ", "Index must be an Integer")
-
             if index_choice <= 0 or index_choice >= len(filtered_claims):
                 print("Invalid index.")
             else:
@@ -407,17 +335,15 @@ class AccidentReport:
                         new_lines[-1] = new_lines[-1].strip()
                         with open(self.accident_file, "wt") as filehandler:
                             filehandler.writelines(new_lines)
-
-                            self.print_colored_centered("Damage claims successfully updated.", "1;32", width)  # Green color for success message
-                        self.print_colored_centered("Done! You have successfully paid.", "1;32", width)  # Green color for success message
+                        print("Damage claims successfully updated.")
+                        print("Done! You have successfully paid.")
                     else:
-                        self.print_colored_centered("Payment not processed.", "1;31", width)  # Red color for cancel message
+                        print("Payment not processed.")
                 else:
-                    self.print_colored_centered("Selected claim is already paid.", "1;33", width)  # Yellow color for info message
+                    print("Selected claim is already paid.")
 
         except Exception as e:
-            self.print_colored_centered("Something went wrong when updating the report:", "1;31", width)  # Red color for error message
-
+            print("Something went wrong when updating the report:", e)
 
 accident_report = AccidentReport(cars_file = "cars.txt", booking_file = "booking.txt", accident_file ="accident.txt" )
 

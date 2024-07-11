@@ -1,0 +1,3 @@
+Car Detail | Description | Environment Condition | Date | Time | Status | Amount
+VBN 9900 | Light | Bumpy | 27/08/2024 | 21:35:00 | Unpaid | 500
+WXY 1234 | Light | Road | 03/05/2024 | 21:35:00 | Unpaid | 100000

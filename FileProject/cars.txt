@@ -1,5 +1,16 @@
 PlatNo | Model | Name | Color | Status
 VDT 7458 | Nissan | Serena | peach  | inactive
 ANP 0105 | Toyota | Vellfire | black | active
-PKP 9903 | Mclauren | Spider | yellow | active
+PKP 9903 | McLaren | Spider | yellow | active
 DCX 8085 | Honda | CRV | white | inactive
+WXY 1234 | BMW | X5 | silver | active
+JKL 5678 | Audi | Q7 | blue | active
+GHJ 9012 | Mercedes | GLC | red | inactive
+BNM 3456 | Tesla | Model S | black | active
+QWE 7890 | Ford | Mustang | green | inactive
+RTY 1122 | Chevrolet | Camaro | orange | active
+ASD 3344 | Lexus | RX | white | active
+ZXC 5566 | Jaguar | F-Pace | grey | inactive
+HJK 7788 | Porsche | Cayenne | blue | active
+VBN 9900 | Rover | Evoque | red | active
+MNB 1235 | Volvo | XC90 | silver | inactive

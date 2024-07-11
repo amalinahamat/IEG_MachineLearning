@@ -61,7 +61,7 @@ class InputHandler:
                 value = input(caption)
                 if defaultValue is not None and value.strip() == "":
                     return defaultValue
-                value = datetime.strptime(value, "%I:%M%p").time()
+                value = datetime.strptime(value, "%H:%M:%S").time()
             except ValueError as e:
                 print(errorMessage, e)
             else:
@@ -125,15 +125,16 @@ class AccidentReport:
         while (choice != 0):
             width = 150  # You can adjust this width as per your console's width
             print("\033[1;34m" + "-" * width + "\033[0m")  # Blue color for border
-            self.print_colored_centered("MENU", "1;32", width)  # Green color for the title
+            self.print_colored_centered("MENU", "1;36", width)  # Green color for the title
             print("\033[1;34m" + "-" * width + "\033[0m")  # Blue color for border
-            self.print_colored_centered("0 - EXIT", "1;33", width)  # Yellow color for options
+            self.print_colored_centered("0 - EXIT", "0;31", width)  # Yellow color for options
             self.print_colored_centered("1 - Reporting Accident", "1;33", width)  # Yellow color for options
             self.print_colored_centered("2 - List of Report", "1;33", width)  # Yellow color for options
-            self.print_colored_centered("3 - Delete Report", "1;33", width)  # Yellow color for options
+            self.print_colored_centered("3 - Updating Report", "1;33", width)  # Yellow color for options
             self.print_colored_centered("4 - Damage Claim", "1;33", width)  # Yellow color for options
+            self.print_colored_centered("5 - Delete Report", "1;33", width)  # Yellow color for options
             print("\033[1;34m" + "-" * width + "\033[0m")  # Blue color for border
-            choice = InputHandler.keyboard_input(int, "Choice [0, 1, 2, 3, 4]: ", "Choice must be Integer")
+            choice = InputHandler.keyboard_input(int, "Choice [0, 1, 2, 3, 4, 5]: ", "Choice must be Integer")
             if (choice == 0):
                 print("Thank you for using our system")
                 break
@@ -142,9 +143,12 @@ class AccidentReport:
             elif (choice == 2):
                 self.printReport()
             elif (choice == 3):
-                self.deleteReport()
+                self.updateReport()
             elif (choice == 4):
                 self.printDamageClaims()
+            elif (choice == 5):
+                self.deleteReport()
+        
 
     # Filters cars based on their status (active, inactive, or all).
     def filter_cars(self,lines, status_filter):
@@ -241,9 +245,9 @@ class AccidentReport:
             if startRent <= accident_date <= endRent:
                 plateNum = car_platNo
                 description = InputHandler.keyboard_input(str, "\n\033[1mDescription\033[0m[Light/Medium/Extreme Accident]: ", "Description must be String.")
-                environment = InputHandler.keyboard_input(str, "\n\033[1mEnvironment Condition\033[0m[Road:Bumpy/Slippery] | [Weather:Sunny/Rain]: ", "Environment Condition must be String.")
-                time = InputHandler.time_input("\n\033[1mTime\033[0m (9:35pm): ", "Time must be in 12-Hour format.")
-                status = InputHandler.keyboard_input(str, "\n\033[1mStatus\033[0m[Paid/Unpaid]: ", "Status must be String.")
+                environment = InputHandler.keyboard_input(str, "\n\033[1mEnvironment Condition\033[0m[Road:Bumpy/Slippery]|[Weather:Sunny/Rain]: ", "Environment Condition must be String.")
+                time = InputHandler.time_input("\n\033[1mTime\033[0m (20:30:00): ", "Time must be in 24-Hour format.")
+                status = InputHandler.keyboard_input(str, "\n\033[1mStatus\033[0m[paid/unpaid]: ", "Status must be String.")
                 amount = InputHandler.keyboard_input(str, "\n\033[1mAmount\033[0m [RM]: ", "Amount must be String.")
 
                 with open(self.accident_file, "at") as filehandler:
@@ -282,44 +286,60 @@ class AccidentReport:
         except Exception as e:
             print("Something went wrong when we print the description:", e)
 
-
-    # Function to delete an accident report
-    # Reads and displays accident reports, allows the user to select one, and deletes the selected report.
-    def deleteReport(self):
+    def updateReport(self):
         width = 150
         try:
-            with open (self.accident_file, "rt") as filehandler:
+            with open(self.accident_file, "rt") as filehandler:
                 lines = filehandler.readlines()
+                data = [line.strip().split(" | ") for line in lines]
+                # Header
+                header = f"{'No.':<8}{'Car Detail':<15}{'Description':<20}{'Environment':<20}{'Date':<15}{'Time':<15}{'Status':<20}{'Amount':<19}"
+                self.print_colored_centered(header, "1;34", width)  # Blue color for header
+                self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
 
-            # Header
-            header = f"{'No.':<8}{'Car Detail':<15}{'Description':<20}{'Environment':<20}{'Date':<15}{'Time':<15}{'Status':<20}{'Amount':<19}"
-            self.print_colored_centered(header, "1;34", width)  # Blue color for header
-            self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
+                for index, line in enumerate(data[1:], start=1):  # Skip header and enumerate from 1
+                    car_detail, description, environment, date, time, status, amount = line
+                    report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
+                    self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
 
-            for index, line in enumerate(lines):
-                    car_detail,description, environment, date, time, status, amount = line.strip().split(" | ")
-                    if (index == 0):
-                        continue
+                print("\n\n")
+
+                # Confirm update
+                confirm = InputHandler.keyboard_input(str, "Are you sure you want to edit this report (y/n)? ", "Response must be string")
+                if confirm.lower() == 'y':
+                    # Get the index of the report to update
+                    index = InputHandler.keyboard_input(int, "Please key in the index of the Report: ", "Index must be an integer")
+                    if index < 1 or index >= len(data):
+                        print("Sorry, report not available")
                     else:
-                        report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
-                        self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+                        # Display the selected report
+                        report = data[index]
+                        car_detail, description, environment, date, time, status, amount = report
+                        print(f"\nReport Details:\nCar Detail: {car_detail}\nDescription: {description}\nEnvironment Condition: {environment}\nDate: {date}\nTime: {time}\nStatus: {status}\nAmount: {amount}")
 
-            choice = InputHandler.keyboard_input(int, "Enter the number of the report to delete: ", "Choice must be an integer.")
+                        # Get new values or keep existing if left empty
+                        new_car = InputHandler.keyboard_input(str, f"Car [{car_detail}]: ", "Car Detail must be a String.", car_detail)
+                        new_description = InputHandler.keyboard_input(str, f"Description [{description}]: ", "Description must be String", description)
+                        new_environment = InputHandler.keyboard_input(str, f"Environment Condition [{environment}]: ", "Environment Condition must be String", environment)
+                        new_date = InputHandler.date_input(f"Date [{date}]: ", "Date must be in DD/MM/YYYY format.", date)
+                        new_time = InputHandler.time_input(f"Time [{time}]: ", "Time must be in HH:MM:SS format.", time)
+                        new_status = InputHandler.keyboard_input(str, f"Status [{status}]: ", "Status must be String", status)
+                        new_amount = InputHandler.keyboard_input(str, f"Amount [{amount}]: ", "Amount must be String", amount)
 
-            if 1 <= choice <= len(lines) - 1:
-                lines.pop(choice)  # Remove the selected report
-                
-                # new_lines = [" | ".join(map(str, i)) + "\n" for i in lines]
-                # new_lines[-1] = new_lines[-1].strip()
+                        # Update report in the data list
+                        data[index] = [new_car, new_description, new_environment, new_date.strftime('%d/%m/%Y'), new_time, new_status, new_amount]
 
-                with open(self.accident_file, "wt") as filehandler:
-                    #filehandler.writelines(lines)
-                    filehandler.write("\n".join(line.strip() for line in lines))
-                print("Report deleted successfully.")
-            else:
-                print("Invalid choice.")
+                        # Convert the data back to lines
+                        newlines = [" | ".join(map(str, report)) + "\n" for report in data]
+                        newlines[-1] = newlines[-1].strip()  # Remove newline from the last line
+
+                        # Write updated lines back to the file
+                        with open(self.accident_file, "wt") as filehandler:
+                            filehandler.writelines(newlines)
+                        print("Report updated successfully.")
+
         except Exception as e:
-            print("Something went wrong when deleting the report:", e)
+            print("Something went wrong when updating the report:", e)
 
     # Filters damage claims based on their status (paid, unpaid, or all).
     def filter_claims(self, lines, status_filter):
@@ -417,6 +437,45 @@ class AccidentReport:
 
         except Exception as e:
             self.print_colored_centered("Something went wrong when updating the report:", "1;31", width)  # Red color for error message
+
+
+    # Function to delete an accident report
+    # Reads and displays accident reports, allows the user to select one, and deletes the selected report.
+    def deleteReport(self):
+        width = 150
+        try:
+            with open (self.accident_file, "rt") as filehandler:
+                lines = filehandler.readlines()
+
+            # Header
+            header = f"{'No.':<8}{'Car Detail':<15}{'Description':<20}{'Environment':<20}{'Date':<15}{'Time':<15}{'Status':<20}{'Amount':<19}"
+            self.print_colored_centered(header, "1;34", width)  # Blue color for header
+            self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
+
+            for index, line in enumerate(lines):
+                    car_detail,description, environment, date, time, status, amount = line.strip().split(" | ")
+                    if (index == 0):
+                        continue
+                    else:
+                        report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
+                        self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+
+            choice = InputHandler.keyboard_input(int, "Enter the number of the report to delete: ", "Choice must be an integer.")
+
+            if 1 <= choice <= len(lines) - 1:
+                lines.pop(choice)  # Remove the selected report
+                
+                # new_lines = [" | ".join(map(str, i)) + "\n" for i in lines]
+                # new_lines[-1] = new_lines[-1].strip()
+
+                with open(self.accident_file, "wt") as filehandler:
+                    #filehandler.writelines(lines)
+                    filehandler.write("\n".join(line.strip() for line in lines))
+                print("Report deleted successfully.")
+            else:
+                print("Invalid choice.")
+        except Exception as e:
+            print("Something went wrong when deleting the report:", e)
 
 
 accident_report = AccidentReport(cars_file = "cars.txt", booking_file = "booking.txt", accident_file ="accident.txt" )

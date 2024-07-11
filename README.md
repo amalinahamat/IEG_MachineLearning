@@ -21,3 +21,13 @@ Developing web application using Flask
 
 1. create a python program called app.py
 2. in the terminal make sure you are inside the 
+
+
+
+In Python, @staticmethod is a decorator used inside a class to define a method that doesn't operate on an instance of the class (no self parameter), but rather behaves like a regular function. This means:
+
+No Instance Needed: Static methods don't need an instance of the class to be created. They can be called directly on the class itself.
+
+Independent of Instance State: They don't access or modify instance state (attributes or methods) and hence don't require self as the first parameter.
+
+Utility Functions: They are often used for utility functions that are related to the class in some way, but don't depend on specific instance data.

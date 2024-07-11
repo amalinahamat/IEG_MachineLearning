@@ -1,12 +1,10 @@
 Plate No | Description | Environmental Condition | Date | Time | Status | Amount
-VDT 7458 | Extreme | Slippery road | 4/4/2022 | 4.45pm | unpaid | 14000
-ANP 0105 | Light | Bumpy road | 12/11/2023 | 5.45pm | paid | 24000
-ANP 0105 | Light | Bumpy road | 12/8/2023 | 5.45am | unpaid | 34000
-VYZ 9012 | Light | Bumpy road | 6/2/2024 | 12.45pm | paid | Done
-ANP 0105 | Light | Bumpy road | 12/11/2023 | 1.05pm | paid | 34000
-VDT 7458 | Extreme | Slippery road | 4/4/2023 | 4.45pm | unpaid | 14000
-ANP 0105 | Light | Bumpy road | 12/11/2021 | 8.45pm | paid | 34000
-ANP 0105 | Light | Bumpy road | 12/1/2023 | 11.45am | unpaid | 56000
-NEW 1234 | Moderate | Rainy | 20/12/2023 | 7.00am | paid | 0
-ABC 5678 | Extreme | Rainy | 15/10/2023 | 9.15am | unpaid | 18000
-ABC 5678 | Extreme | Rainy | 15/10/2023 | 9.15am | paid | 18000
+VDT 7458 | Extreme | Slippery|Rain | 04/04/2022 | 16:45:00 | paid | 0
+ANP 0105 | Medium | Bumpy|Rain | 15/01/2023 | 11:22:00 | paid | 0
+ANP 0105 | Light | Bumpy|Sunny | 12/08/2023 | 05:15:00 | unpaid | 5500
+GHJ 9012 | Light | Bumpy|Sunny | 12/12/2023 | 16:40:00 | unpaid | 3107
+DCX 8085 | Extreme | Slippery|Sunny | 20/08/2023 | 20:07:00 | paid | 0
+MNB 1235 | Extreme | Slippery|Sunny | 02/03/2024 | 03:15:00 | unpaid | 2500
+PKP 9903 | Light | Bumpy|Sunny | 05/07/2024 | 21:35:00 | unpaid | 550
+VDT 7458 | Medium | Bumpy|Sunny | 01/02/2023 | 22:15:00 | paid | 0
+RTY 1122 | Medium | Slippery|Sunny | 05/06/2024 | 07:50:00 | unpaid | 4455
