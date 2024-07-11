@@ -92,30 +92,47 @@ plt.savefig('plot7.png')
 
 # 4
 
-import pandas as pd
+
 import matplotlib.pyplot as plt
-import numpy as np
+import seaborn as sns
 
 # Read the csv file
-df = pd.read_csv('Medals.csv')
+data = sns.load_dataset('tips')
 
-# Create bins for the histogram
-bins = [10, 20, 30, 40]
-
-# Create a histogram of the total medals
-plt.hist(df['Total'], bins=bins, edgecolor='black', label='Total Medals Distribution')
+# Create a scatter 
+sns.barplot(x = "day", y = "total_bill", data = data , palette = "PuRd", ci = None)
 
 # Set the x-axis label
-plt.xlabel('Rank')
+plt.xlabel('Day')
 
 # Set the y-axis label
-plt.ylabel('Rank_by_Total')
+plt.ylabel('Total Bill')
 
 # Set the title
-plt.title('Rank Comarisom')
-
-# Set the legend location
-plt.legend(loc='upper left')
+plt.title('Total Bill by Day')
 
 # Save the plot to a file
-plt.savefig('plot4.png')
+plt.savefig('splot3.png')
+
+# 5
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read the csv file
+data = sns.load_dataset('tips')
+
+# Create a scatter 
+sns.barplot(x = "day", y = "total_bill", data = data , palette = "PuRd", ci = None)
+
+# Set the x-axis label
+plt.xlabel('Day')
+
+# Set the y-axis label
+plt.ylabel('Total Bill')
+
+# Set the title
+plt.title('Total Bill by Day')
+
+# Save the plot to a file
+plt.savefig('splot3.png')
