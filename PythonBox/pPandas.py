@@ -90,6 +90,20 @@ print('DataFrame')
 print(df)
 
 
+# 6
+
+import pandas as pd
+
+data = pd.read_csv('iris_with_header.csv')
+
+print("Original DataFrame")
+df = pd.DataFrame(data)
+print(df)
+
+print("Sorted DataFrame")
+sort_row = df.sort_values('sepal_length', ascending=True)
+print(sort_row)
+
 
 
 
