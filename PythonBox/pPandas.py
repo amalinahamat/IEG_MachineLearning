@@ -21,10 +21,11 @@ print(df)
 
 import pandas as pd
 
-data = 'iris.csv'
+columns = ['sepal_length' , 'sepal_width' , 'petal_length', 'petal_width', 'species_type' ]
 
-columns = ["sepal_length", "sepal_width", "petal_length", "petal_width", "species_type"]
-index  = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+data = pd.read_csv('iris.csv',  names =  columns, skiprows=1)
 
-df = pd.DataFrame(data, columns = columns, index = index)
+df = pd.DataFrame(data, columns = columns)
 print(df)
+
+# by default when print pandas dataframe, it will include index by default which start from 0
