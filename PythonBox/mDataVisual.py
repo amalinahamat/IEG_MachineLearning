@@ -164,7 +164,8 @@ import seaborn as sns
 
 data = sns.load_dataset('tips', cache=True, data_home=r'\temp')
 
-sns.histplot(data = data, x = "total_bill",y = "Count", kde = True)
+# histogram
+sns.histplot(data = data, x = "total_bill", kde = True)
 
 # Save the plot to a file
 plt.savefig('splot2.png')
