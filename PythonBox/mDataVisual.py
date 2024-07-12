@@ -183,3 +183,61 @@ sns.countplot(data = data, x = "day", hue = "sex", palette = 'magma')
 
 # Save the plot to a file
 plt.savefig('splot6.png')
+
+# i assess
+
+# 1
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Read the csv file
+data = pd.read_csv('Medals.csv')
+
+df = pd.DataFrame(data)
+
+# Create a line
+#plt.plot(df["Team"], df["Total"], color = "b", marker = "o", linestyle = "-")
+plt.plot(df["Team"], df["Total"], linestyle="-", color="b", marker="o")
+# Set the x-axis label
+plt.xlabel('Team Name')
+
+# Set the y-axis label
+plt.ylabel('Total Number of Medals')
+
+# Set the title
+plt.title('Team-wise Total Medal Data')
+
+# Save the plot to a file
+plt.savefig('plot1.png')
+
+
+# 2
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read the csv file
+data = sns.load_dataset('tips', cache=True, data_home=r'\temp')
+
+palette = {"Thur": "#1f77b4", "Fri": "#ff7f0e", "Sat": "#2ca02c", "Sun": "#d62728"}
+
+#plt.figure(figsize=(8,10))
+plt.figure()
+sns.boxplot(x = 'day', y = 'total_bill', data = data, palette = palette, flierprops={"marker": "D", "markerfacecolor": "grey", "markeredgecolor": "black"} )
+
+# Remove horizontal grid lines
+plt.axhline(linewidth=0)
+
+# Remove vertical grid lines
+plt.axvline(linewidth=0)
+
+# Remove grid
+plt.grid(False)
+
+plt.xlabel('day')
+plt.ylabel('total_bill')
+
+# Save the plot to a file
+plt.savefig('splot8.png')
