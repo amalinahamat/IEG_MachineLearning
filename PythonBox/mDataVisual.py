@@ -121,14 +121,14 @@ plt.savefig('plot4.png')
 
 # 5
 
-import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.pyplot as plt
 
-# Read the csv file
-data = sns.load_dataset('tips’, cache=True, data_home='\temp')
+# Load the dataset
+data = sns.load_dataset('tips', cache=True, data_home=r'\temp')
 
-# Create a scatter 
-sns.barplot(x = "day", y = "total_bill", data = data , palette = "PuRd", ci = None)
+# Create a bar plot
+sns.barplot(x="day", y="total_bill", data=data, palette='PuRd', ci=None)
 
 # Set the x-axis label
 plt.xlabel('day')
@@ -136,8 +136,9 @@ plt.xlabel('day')
 # Set the y-axis label
 plt.ylabel('total_bill')
 
-# Set the title
-#plt.title('Total Bill by Day')
-
 # Save the plot to a file
 plt.savefig('splot3.png')
+
+# Show the plot (optional)
+#plt.show()
+
