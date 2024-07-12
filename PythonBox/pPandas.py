@@ -29,3 +29,45 @@ df = pd.DataFrame(data, columns = columns)
 print(df)
 
 # by default when print pandas dataframe, it will include index by default which start from 0
+
+
+# 3
+
+import pandas as pd
+
+data = pd.read_csv('iris_with_header.csv')
+
+df = pd.DataFrame(data)
+
+print(df[['sepal_length', 'sepal_width']])
+
+# 4
+
+import pandas as pd
+
+data = pd.read_csv('iris_with_header.csv')
+
+print("DataFrame")
+df = pd.DataFrame(data)
+print(df)
+
+print("Shape")
+shape = df.shape
+print(shape)
+
+print("Data Types")
+data_type = df.dtypes
+print(data_type)
+
+print("Column Count under each type")
+column_number = df.dtypes.value_counts()
+print(column_number)
+
+drop_species = df.drop("species_type", axis = 1)
+
+print("Summary Statistics")
+summary = drop_species.describe(include='all')
+print(summary)
+
+
+
