@@ -104,6 +104,27 @@ print("Sorted DataFrame")
 sort_row = df.sort_values('sepal_length', ascending=True)
 print(sort_row)
 
+# i assess
+
+# 1
+import pandas as pd
+
+df1 = pd.DataFrame([['Anitha',7.8,8.9],['Baskar',5.6,6.9]], columns = ['student_name', 'sem1_cgpa', 'sem2_cgpa'])
+df2 = pd.DataFrame([['Anitha','CSE'],['Baskar','IT']], columns = ['student_name', 'department'])
+
+print('DataFrame1')
+print(df1)
+print('DataFrame2')
+print(df2)
+
+merge_data = pd.merge(df1,df2, on = 'student_name')
+merge_data = merge_data[['student_name', 'department', 'sem1_cgpa', 'sem2_cgpa']]
+print("Merged DataFrame")
+print(merge_data)
+ 
+
+
+
 
 
 
