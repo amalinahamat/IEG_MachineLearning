@@ -142,3 +142,29 @@ plt.savefig('splot3.png')
 # Show the plot (optional)
 #plt.show()
 
+# 6
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = sns.load_dataset('car_crashes', cache=True, data_home=r'\temp')
+
+# Create a scatter plot
+plt.scatter(data["speeding"], data["alcohol"])
+sns.set(style="whitegrid", rc={'grid.color': '.5', 'grid.linestyle': '-'})
+
+# Save the plot to a file
+plt.savefig('splot1.png')
+
+# 7
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = sns.load_dataset('tips', cache=True, data_home=r'\temp')
+
+sns.histplot(data = data, x = "total_bill",y = "Count", kde = True)
+
+# Save the plot to a file
+plt.savefig('splot2.png')
