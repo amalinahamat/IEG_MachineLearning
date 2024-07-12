@@ -69,5 +69,27 @@ print("Summary Statistics")
 summary = drop_species.describe(include='all')
 print(summary)
 
+# 5
+import pandas as pd
+
+data = pd.read_csv('iris_with_header.csv')
+df = pd.DataFrame(data)
+
+print('Column Names')
+column_names = df.columns
+print(column_names)
+
+print('Column Names after renaming')
+data.columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'SpeciesType']
+print(data.columns)
+
+# column_names2 = df.columns
+# print(column_names2)
+
+print('DataFrame')
+print(df)
+
+
+
 
 
