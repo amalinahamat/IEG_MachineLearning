@@ -165,6 +165,18 @@ class AccidentReport:
                 elif status_filter == "o":
                     filtered_lines.append(line)
         return filtered_lines
+    
+    def filter_bookings(self, booking_lines, selected_car):
+        current_date = datetime.now().date()
+        filtered_booking = []
+        for booking in booking_lines:
+            if booking.startswith(selected_car):
+                platNo, customer, start_rent, end_rent = booking.strip().split(" | ")
+                start_date = datetime.strptime(start_rent, "%d/%m/%Y").date()
+                end_date = datetime.strptime(end_rent, "%d/%m/%Y").date()
+                if start_date <= current_date <= end_date:
+                    filtered_booking.append(booking)
+        return filtered_booking
 
     # Function to select a car from the list
     # Displays the list of cars and allows the user to select one. It then displays bookings related to the selected car and allows the user to choose a booking for accident reporting.
@@ -210,21 +222,22 @@ class AccidentReport:
 
                 print("\nBooking Details:")
 
-                bookingRelated = [line.strip() for line in booking_lines if line.startswith(selected_car)]
-                for booking_index, booking_line in enumerate(bookingRelated):
-                    booking_details = f"{booking_index + 1}. {booking_line}"
-                    self.print_colored_centered(booking_details, "1;36", width)  # Cyan color for booking details
+                filtered_bookingRelated = self.filter_bookings(booking_lines, selected_car)
 
+                #bookingRelated = [line.strip() for line in booking_lines if line.startswith(selected_car)]
+                if filtered_bookingRelated:
+                    for booking_index, booking_line in enumerate(filtered_bookingRelated):
+                        booking_details = f"{booking_index + 1}. {booking_line}"
+                        self.print_colored_centered(booking_details, "1;36", width)  # Cyan color for booking details
 
-                if bookingRelated:
                     booking_choice = InputHandler.keyboard_input(int, "\nEnter the number of the booking: ", "Choice must be an integer.")
-                    if booking_choice < 1 or booking_choice > len(bookingRelated):
+                    if booking_choice < 1 or booking_choice > len(filtered_bookingRelated):
                         print("Invalid choice, please select a valid booking number.")
                     else:
-                        selected_booking = bookingRelated[booking_choice - 1]
-                        self.accidentReport(selected_car, selected_booking)        
+                        selected_booking = filtered_bookingRelated[booking_choice - 1]
+                        self.accidentReport(selected_car, selected_booking)
                 else:
-                    print("No booking found for the selected car.")
+                    print("No current booking found for the selected car.")
                     return None
                             
         except Exception as e:
@@ -233,14 +246,20 @@ class AccidentReport:
         
     # Function to create an accident report
     # Collects accident details from the user and validates that the accident date is within the booking period. It then appends the report to the accident file.
-    def accidentReport(self,car_choice, selected_booking):
-
+    def accidentReport(self, car_choice, selected_booking):
         try:
             car_platNo, _, startRent, endRent = selected_booking.split(" | ")
 
-            accident_date = InputHandler.date_input("Date (DD/MM/YYYY): ", "Date must be in DD/MM/YYYY format.")
-            startRent = datetime.strptime(startRent, "%d/%m/%Y").date()
-            endRent = datetime.strptime(endRent, "%d/%m/%Y").date()
+            # Ensure accident_dat is a string or date object and convert it to date object if necessary
+            accident_dat = InputHandler.date_input("Date (DD/MM/YYYY): ", "Date must be in DD/MM/YYYY format.")
+            if isinstance(accident_dat, str):
+                accident_date = datetime.strptime(accident_dat, "%d/%m/%Y").date()  # Convert string to date object
+            else:
+                accident_date = accident_dat  # Assume it's already a date object
+
+            # Convert startRent and endRent to date objects
+            startRent = datetime.strptime(startRent.strip(), "%d/%m/%Y").date()
+            endRent = datetime.strptime(endRent.strip(), "%d/%m/%Y").date()
 
             if startRent <= accident_date <= endRent:
                 plateNum = car_platNo
@@ -258,7 +277,8 @@ class AccidentReport:
 
         except Exception as e:
             print("Something went wrong when we append the accident report:", e)
-        
+
+
     # Function to print accident reports
     # Reads and displays accident reports from the accident file
     def printReport(self):
@@ -327,7 +347,17 @@ class AccidentReport:
                         new_amount = InputHandler.keyboard_input(str, f"Amount [{amount}]: ", "Amount must be String", amount)
 
                         # Update report in the data list
-                        data[index] = [new_car, new_description, new_environment, new_date.strftime('%d/%m/%Y'), new_time, new_status, new_amount]
+                        if new_date == date:
+                            new_date_str = date
+                        else:
+                            new_date_str = new_date.strftime('%d/%m/%Y')
+                        
+                        if new_time == time:
+                            new_time_str = time
+                        else:
+                            new_time_str = new_time.strftime('%H:%M:%S')
+                        
+                        data[index] = [new_car, new_description, new_environment, new_date_str, new_time_str, new_status, new_amount]
 
                         # Convert the data back to lines
                         newlines = [" | ".join(map(str, report)) + "\n" for report in data]
@@ -340,6 +370,7 @@ class AccidentReport:
 
         except Exception as e:
             print("Something went wrong when updating the report:", e)
+
 
     # Filters damage claims based on their status (paid, unpaid, or all).
     def filter_claims(self, lines, status_filter):
@@ -410,12 +441,12 @@ class AccidentReport:
 
             index_choice = InputHandler.keyboard_input(int, "Enter the number from the list: ", "Index must be an Integer")
 
-            if index_choice <= 0 or index_choice >= len(filtered_claims):
+            if index_choice <= 0 or index_choice >= len(filtered_claims):   
                 print("Invalid index.")
             else:
                 car_details, description, environment, date, time, status, amount = filtered_claims[index_choice].strip().split(" | ")
                 if status.lower() == "unpaid":
-                    choice_paid = InputHandler.keyboard_input(str, f"Do you want to fully pay the amount [RM {amount}] for plate number [{car_details} at date [{date}]]? [y/n]: ", "Response must be a string")
+                    choice_paid = InputHandler.keyboard_input(str, f"Do you want to fully pay the amount [RM {amount}] for plate number [{car_details}] at date [{date}]? [y/n]: ", "Response must be a string")
                     if choice_paid.lower() == 'y':
                         for i, line in enumerate(data):
                             if line[0] == car_details and line[3] == date and line[5].lower() == "unpaid":

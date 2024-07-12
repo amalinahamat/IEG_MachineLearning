@@ -1,5 +1,6 @@
 from os.path import exists
 from datetime import datetime
+#import datetime
 
 # 1. InputHandler Class
 # This class handles user input, ensuring the data is valid and correctly formatted.
@@ -165,6 +166,18 @@ class AccidentReport:
                 elif status_filter == "o":
                     filtered_lines.append(line)
         return filtered_lines
+    
+    def filter_bookings(self, booking_lines, selected_car):
+        current_date = datetime.now().date()
+        filtered_booking = []
+        for booking in booking_lines:
+            if booking.startswith(selected_car):
+                platNo, customer, start_rent, end_rent = booking.strip().split(" | ")
+                start_date = datetime.strptime(start_rent, "%d/%m/%Y").date()
+                end_date = datetime.strptime(end_rent, "%d/%m/%Y").date()
+                if start_date <= current_date <= end_date:
+                    filtered_booking.append(booking)
+        return filtered_booking
 
     # Function to select a car from the list
     # Displays the list of cars and allows the user to select one. It then displays bookings related to the selected car and allows the user to choose a booking for accident reporting.
@@ -210,21 +223,38 @@ class AccidentReport:
 
                 print("\nBooking Details:")
 
-                bookingRelated = [line.strip() for line in booking_lines if line.startswith(selected_car)]
-                for booking_index, booking_line in enumerate(bookingRelated):
-                    booking_details = f"{booking_index + 1}. {booking_line}"
-                    self.print_colored_centered(booking_details, "1;36", width)  # Cyan color for booking details
+                filtered_bookingRelated = self.filter_bookings(booking_lines, selected_car)
 
+                #bookingRelated = [line.strip() for line in booking_lines if line.startswith(selected_car)]
+                if filtered_bookingRelated:
+                    for booking_index, booking_line in enumerate(filtered_bookingRelated):
+                        booking_details = f"{booking_index + 1}. {booking_line}"
+                        self.print_colored_centered(booking_details, "1;36", width)  # Cyan color for booking details
 
-                if bookingRelated:
                     booking_choice = InputHandler.keyboard_input(int, "\nEnter the number of the booking: ", "Choice must be an integer.")
-                    if booking_choice < 1 or booking_choice > len(bookingRelated):
+                    if booking_choice < 1 or booking_choice > len(filtered_bookingRelated):
                         print("Invalid choice, please select a valid booking number.")
                     else:
-                        selected_booking = bookingRelated[booking_choice - 1]
-                        self.accidentReport(selected_car, selected_booking)        
+                        selected_booking = filtered_bookingRelated[booking_choice - 1]
+                        self.accidentReport(selected_car, selected_booking)
+
+                        # # Check if accident report already exists for this booking
+                        # car_platNo, _, startRent, endRent = selected_booking.split(" | ")
+                        # with open(self.accident_file, 'rt') as filehandler:
+                        #     accident_lines = filehandler.readlines()
+                        
+                        # report_exists = False
+                        # for line in accident_lines:
+                        #     if line.startswith(car_platNo) and line.split(" | ")[3].strip() == accident_date.strftime('%d/%m/%Y'):
+                        #         print(f"The accident report for car {car_platNo} on {accident_date.strftime('%d/%m/%Y')} already exists.")
+                        #         report_exists = True
+                        #         break
+
+                        # if not report_exists:
+                        #     self.accidentReport(selected_car, selected_booking)
+                       
                 else:
-                    print("No booking found for the selected car.")
+                    print("No current booking found for the selected car.")
                     return None
                             
         except Exception as e:
@@ -233,32 +263,54 @@ class AccidentReport:
         
     # Function to create an accident report
     # Collects accident details from the user and validates that the accident date is within the booking period. It then appends the report to the accident file.
-    def accidentReport(self,car_choice, selected_booking):
-
+    def accidentReport(self, car_choice, selected_booking):
         try:
             car_platNo, _, startRent, endRent = selected_booking.split(" | ")
 
-            accident_date = InputHandler.date_input("Date (DD/MM/YYYY): ", "Date must be in DD/MM/YYYY format.")
-            startRent = datetime.strptime(startRent, "%d/%m/%Y").date()
-            endRent = datetime.strptime(endRent, "%d/%m/%Y").date()
-
-            if startRent <= accident_date <= endRent:
-                plateNum = car_platNo
-                description = InputHandler.keyboard_input(str, "\n\033[1mDescription\033[0m[Light/Medium/Extreme Accident]: ", "Description must be String.")
-                environment = InputHandler.keyboard_input(str, "\n\033[1mEnvironment Condition\033[0m[Road:Bumpy/Slippery]|[Weather:Sunny/Rain]: ", "Environment Condition must be String.")
-                time = InputHandler.time_input("\n\033[1mTime\033[0m (20:30:00): ", "Time must be in 24-Hour format.")
-                status = InputHandler.keyboard_input(str, "\n\033[1mStatus\033[0m[paid/unpaid]: ", "Status must be String.")
-                amount = InputHandler.keyboard_input(str, "\n\033[1mAmount\033[0m [RM]: ", "Amount must be String.")
-
-                with open(self.accident_file, "at") as filehandler:
-                    filehandler.write(f"\n{plateNum} | {description} | {environment} | {accident_date.strftime('%d/%m/%Y')} | {time} | {status} | {amount}")
-                print("Accident report successfully added.")
+            # Ensure accident_dat is a string or date object and convert it to date object if necessary
+            accident_dat = InputHandler.date_input("Date (DD/MM/YYYY): ", "Date must be in DD/MM/YYYY format.")
+            if isinstance(accident_dat, str):
+                accident_date = datetime.strptime(accident_dat, "%d/%m/%Y").date()  # Convert string to date object
             else:
-                print(f"Accident date {accident_date.strftime('%d/%m/%Y')} is not within the booking period from {startRent.strftime('%d/%m/%Y')} to {endRent.strftime('%d/%m/%Y')}.")
+                accident_date = accident_dat  # Assume it's already a date object
 
+            # Convert startRent and endRent to date objects
+            startRent = datetime.strptime(startRent.strip(), "%d/%m/%Y").date()
+            endRent = datetime.strptime(endRent.strip(), "%d/%m/%Y").date()
+
+            # Check if an accident report for this car and date already exists within the booking period
+            with open(self.accident_file, 'rt') as filehandler:
+                accident_lines = filehandler.readlines()
+
+            report_exists = False
+            for line in accident_lines:
+                if line.startswith(car_platNo) and line.split(" | ")[3].strip() == accident_date.strftime('%d/%m/%Y'):
+                    print(f"The accident report for car {car_platNo} on {accident_date.strftime('%d/%m/%Y')} already exists.")
+                    report_exists = True
+                    break
+
+            if not report_exists:
+
+                if startRent <= accident_date <= endRent:
+                    plateNum = car_platNo
+                    description = InputHandler.keyboard_input(str, "\n\033[1mDescription\033[0m[Light/Medium/Extreme Accident]: ", "Description must be String.")
+                    environment = InputHandler.keyboard_input(str, "\n\033[1mEnvironment Condition\033[0m[Road:Bumpy/Slippery]|[Weather:Sunny/Rain]: ", "Environment Condition must be String.")
+                    time = InputHandler.time_input("\n\033[1mTime\033[0m (20:30:00): ", "Time must be in 24-Hour format.")
+                    status = InputHandler.keyboard_input(str, "\n\033[1mStatus\033[0m[paid/unpaid]: ", "Status must be String.")
+                    amount = InputHandler.keyboard_input(float, "\n\033[1mAmount\033[0m [RM]: ", "Amount must be String.")
+                    amount = f"{amount:.2f}"  # Format amount to 2 decimal places 
+
+                    with open(self.accident_file, "at") as filehandler:
+                        filehandler.write(f"\n{plateNum} | {description} | {environment} | {accident_date.strftime('%d/%m/%Y')} | {time} | {status} | {amount}")
+                    print("Accident report successfully added.")
+                else:
+                    print(f"Accident date {accident_date.strftime('%d/%m/%Y')} is not within the booking period from {startRent.strftime('%d/%m/%Y')} to {endRent.strftime('%d/%m/%Y')}.")
+            else:
+                print(f"The accident report for car {car_platNo} on {accident_date.strftime('%d/%m/%Y')} already exists. No duplicate entry added.")
         except Exception as e:
             print("Something went wrong when we append the accident report:", e)
-        
+
+
     # Function to print accident reports
     # Reads and displays accident reports from the accident file
     def printReport(self):
@@ -299,6 +351,7 @@ class AccidentReport:
 
                 for index, line in enumerate(data[1:], start=1):  # Skip header and enumerate from 1
                     car_detail, description, environment, date, time, status, amount = line
+                    amount = f"{float(amount):.2f}"  # Format amount to 2 decimal places
                     report_line = f"{index:<8}{car_detail:<15}{description:<20}{environment:<20}{date:<15}{time:<15}{status:<20}{amount:<19}"
                     self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
 
@@ -315,6 +368,7 @@ class AccidentReport:
                         # Display the selected report
                         report = data[index]
                         car_detail, description, environment, date, time, status, amount = report
+                        amount = f"{float(amount):.2f}"  # Format amount to 2 decimal places
                         print(f"\nReport Details:\nCar Detail: {car_detail}\nDescription: {description}\nEnvironment Condition: {environment}\nDate: {date}\nTime: {time}\nStatus: {status}\nAmount: {amount}")
 
                         # Get new values or keep existing if left empty
@@ -325,9 +379,21 @@ class AccidentReport:
                         new_time = InputHandler.time_input(f"Time [{time}]: ", "Time must be in HH:MM:SS format.", time)
                         new_status = InputHandler.keyboard_input(str, f"Status [{status}]: ", "Status must be String", status)
                         new_amount = InputHandler.keyboard_input(str, f"Amount [{amount}]: ", "Amount must be String", amount)
+                        new_amount = f"{float(new_amount):.2f}"  # Format new amount to 2 decimal places
+
 
                         # Update report in the data list
-                        data[index] = [new_car, new_description, new_environment, new_date.strftime('%d/%m/%Y'), new_time, new_status, new_amount]
+                        if new_date == date:
+                            new_date_str = date
+                        else:
+                            new_date_str = new_date.strftime('%d/%m/%Y')
+                        
+                        if new_time == time:
+                            new_time_str = time
+                        else:
+                            new_time_str = new_time.strftime('%H:%M:%S')
+                        
+                        data[index] = [new_car, new_description, new_environment, new_date_str, new_time_str, new_status, new_amount]
 
                         # Convert the data back to lines
                         newlines = [" | ".join(map(str, report)) + "\n" for report in data]
@@ -341,6 +407,7 @@ class AccidentReport:
         except Exception as e:
             print("Something went wrong when updating the report:", e)
 
+    """
     # Filters damage claims based on their status (paid, unpaid, or all).
     def filter_claims(self, lines, status_filter):
         filtered_lines = []
@@ -356,7 +423,27 @@ class AccidentReport:
                 elif status_filter == "o":
                     filtered_lines.append(line)
         return filtered_lines
+    """
 
+    def filter_claims(self, lines, status_filter):
+        filtered_lines = []
+        for index, line in enumerate(lines):
+            if index == 0:
+                filtered_lines.append(line)
+            else:
+                try:
+                    # Correct the indexing here and ensure it correctly points to the 'amount' field
+                    car_details, description, environment, date, time, status, amount = line.strip().split(" | ")
+                    if status_filter == "p" and status.lower() == "paid":  # Corrected to check status correctly
+                        filtered_lines.append(line)
+                    elif status_filter == "u" and status.lower() == "unpaid":  # Corrected to check status correctly
+                        filtered_lines.append(line)
+                    elif status_filter == "o":
+                        filtered_lines.append(line)
+                except ValueError as e:
+                    print(f"Error in line {index + 1}: {e}")  # Print error message if splitting fails
+
+        return filtered_lines
 
     # Function to print damage claims
     # Displays damage claims based on the filter and allows the user to change the status of a claim to 'paid'.
@@ -378,14 +465,20 @@ class AccidentReport:
 
             print("\nDamage Claims:")
             for index, line in enumerate(filtered_claims):
-                car_details, description, environment, date, time, status, amount = line.strip().split(" | ")
-                if index == 0:
-                    header = f"{'No.':<8}{'Car Details':<15}{"Date":<15}{'Amount':<10}{'Status':<10}"
-                    self.print_colored_centered(header, "1;34", width)  # Blue color for header
-                    self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
-                else:
-                    report_line = f"{index:<8}{car_details:<15}{date:<15}{amount:<10}{status:<10}"
-                    self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+                try:
+                    car_details, description, environment, date, time, status, amount = line.strip().split(" | ")
+                    #amount = f"{float(amount):.2f}"  # Format amount to 2 decimal places
+                    if index == 0:
+                        header = f"{'No.':<8}{'Car Details':<15}{"Date":<15}{'Amount':<10}{'Status':<10}"
+                        self.print_colored_centered(header, "1;34", width)  # Blue color for header
+                        self.print_colored_centered("=" * width, "1;34", width)  # Blue color for separator
+                    else:
+                        amount = f"{float(amount):.2f}"  # Format amount to 2 decimal places
+                        report_line = f"{index:<8}{car_details:<15}{date:<15}{amount:<10}{status:<10}"
+                        self.print_colored_centered(report_line, "1;32", width)  # Green color for report lines
+
+                except ValueError as e:
+                    print(f"Error in line {index + 1}: {e}")  # Print error message if splitting fails
 
             status_choice = InputHandler.keyboard_input(str, "Do you want to continue for payment claims? [y/n]: ", "Response must be a string")
             if status_choice.lower() == 'y':
@@ -420,7 +513,7 @@ class AccidentReport:
                         for i, line in enumerate(data):
                             if line[0] == car_details and line[3] == date and line[5].lower() == "unpaid":
                                 data[i][5] = "paid"
-                                data[i][6] = "0"
+                                data[i][6] = "0.00"
                                 break
 
                         new_lines = [" | ".join(map(str, i)) + "\n" for i in data]
