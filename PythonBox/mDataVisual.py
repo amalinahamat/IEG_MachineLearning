@@ -169,3 +169,17 @@ sns.histplot(data = data, x = "total_bill", kde = True)
 
 # Save the plot to a file
 plt.savefig('splot2.png')
+
+
+# 8
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = sns.load_dataset('tips', cache=True, data_home=r'\temp')
+
+sns.countplot(data = data, x = "day", hue = "sex", palette = 'magma')
+
+# Save the plot to a file
+plt.savefig('splot6.png')
