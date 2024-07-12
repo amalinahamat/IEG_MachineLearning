@@ -123,6 +123,20 @@ print("Merged DataFrame")
 print(merge_data)
  
 
+# 2
+
+import pandas as pd
+
+data = pd.read_csv('iris_duplicates.csv')
+
+df = pd.DataFrame(data)
+print("Original DataFrame")
+print(df)
+
+remove_duplicate = df.drop_duplicates()
+print("DataFrame after removing duplicates")
+print(remove_duplicate)
+
 
 
 
