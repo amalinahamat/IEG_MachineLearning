@@ -240,4 +240,4 @@ plt.xlabel('day')
 plt.ylabel('total_bill')
 
 # Save the plot to a file
-plt.savefig('splot8.png')
+plt.savefig('splot8.png') # use the output name
