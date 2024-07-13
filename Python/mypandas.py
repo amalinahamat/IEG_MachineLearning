@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import mysql.connector as mysql
 
 population = pd.read_csv('population.csv')
 print(population)
@@ -14,3 +15,7 @@ population.columns = ['state','children','teenager','adult','senior','total']
 print(population)
 
 population.to_excel("population.xlsx")
+
+connection = mysql.connect(
+        host = 'localhost', user = "root", password = "", database = "peneraju")
+population.to_sql(connection, 'population')

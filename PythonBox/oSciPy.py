@@ -63,9 +63,18 @@ print(f"Root:", sol.x)
 
 # 4
 
+from scipy.integrate import dblquad
+import numpy as np
+
 function = input("Enter the function to be integrated in terms of x and y:\n")
 min_x = int(input("Enter the lower limit for x:\n"))
 max_x = int(input("Enter the upper limit for x:\n"))
 min_y = int(input("Enter the lower limit for y:\n"))
 max_y = int(input("Enter the upper limit for y:\n"))
 
+funct = lambda y, x: eval(function)
+
+result, error = dblquad(funct, min_x, max_x, lambda x: min_y, lambda x: max_y)
+
+print(f"Result of dblquad integration: {result}")
+print(f"Error estimate: {error}")
