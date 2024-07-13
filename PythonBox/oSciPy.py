@@ -30,4 +30,14 @@ y_ = input("Enter the values of y separated by spaces: ")
 x = np.array([float(number) for number in x_.split()])
 y = np.array([float(number) for number in y_.split()])
 
-slope, intercept, 
+# Perform linear regression
+slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+# Calculate R-squared value
+r_squared = r_value ** 2
+
+print(f"Slope: {slope}")
+print(f"Intercept: {intercept}")
+print(f"R-squared: {r_squared}")
+print(f"p-value: {p_value}")
+print(f"Standard error: {std_err}")   
