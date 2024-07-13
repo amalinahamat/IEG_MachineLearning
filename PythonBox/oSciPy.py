@@ -78,3 +78,43 @@ result, error = dblquad(funct, min_x, max_x, lambda x: min_y, lambda x: max_y)
 
 print(f"Result of dblquad integration: {result}")
 print(f"Error estimate: {error}")
+
+
+# i assess
+ 
+# 1
+
+import numpy as np
+from scipy.fft import fft, ifft
+
+sequences = input("Enter the sequence (comma-separated values):\n")
+
+for seq in sequences.split(','):
+    sequence = np.array(float(seq))
+
+fft_result = fft(sequence)
+
+ifft_result = ifft(fft_result)
+
+print(f"Fourier Transform of the sequence: {fft_result}")
+print(f"Inverse Fourier Transform of the transformed sequence: {ifft_result}")
+
+# 1 correct
+import numpy as np
+from scipy.fft import fft, ifft
+
+# Get input from the user
+sequences = input("Enter the sequence (comma-separated values):\n")
+
+# Convert input string to a list of floats
+sequence = np.array([float(num) for num in sequences.split(',')])
+
+# Compute the Fourier transform
+fft_result = fft(sequence)
+
+# Compute the inverse Fourier transform
+ifft_result = ifft(fft_result)
+
+# Print the results
+print(f"Fourier Transform of the sequence: {fft_result}")
+print(f"Inverse Fourier Transform of the transformed sequence: {ifft_result}")
