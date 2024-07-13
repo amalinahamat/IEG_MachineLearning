@@ -501,4 +501,37 @@ plt.clf()
 import numpy as np
 from scipy import stats
 
-number = int(input("Enter the number"))
+# Get the number of elements from the user
+number = int(input("Enter the number of elements:\n"))
+
+# Get the elements from the user
+elements = input("Enter the elements :\n").split(" ")
+# Convert elements to a list of integers
+elements = [int(num) for num in elements]
+
+# Check if the number of elements matches the specified number
+if len(elements) != number:
+    print("The number of elements entered does not match the specified number.")
+else:
+    # Convert elements to a numpy array
+    data = np.array(elements)
+    
+    # Calculate mean
+    mean = np.mean(data)
+    
+    # Calculate median
+    median = np.median(data)
+    
+    # Calculate standard deviation
+    std_dev = np.std(data)
+    
+    # Calculate mode
+    mode = stats.mode(data)
+    
+    # Print the results
+    print(f"Mean: {mean}")
+    print(f"Median: {median}")
+    print(f"Standard Deviation: {std_dev:.4f}")
+    print(f"Mode: {mode.mode[0]}")
+   
+
