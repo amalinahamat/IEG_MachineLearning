@@ -41,3 +41,22 @@ print(f"Intercept: {intercept}")
 print(f"R-squared: {r_squared}")
 print(f"p-value: {p_value}")
 print(f"Standard error: {std_err}")   
+
+# 3
+
+from scipy.optimize import root
+import numpy as np
+
+# Define the equation function
+def equation(x):
+    return x**3 - 2*x - 5
+
+    # Get initial guess from the user
+x0 = float(input("Enter initial guess: "))
+    
+    # Find the root using scipy.optimize.root
+sol = root(equation, x0)
+    
+    # Print the root
+print(f"Root:", sol.x)
+
