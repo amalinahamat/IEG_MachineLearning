@@ -60,3 +60,12 @@ sol = root(equation, x0)
     # Print the root
 print(f"Root:", sol.x)
 
+
+# 4
+
+function = input("Enter the function to be integrated in terms of x and y:\n")
+min_x = int(input("Enter the lower limit for x:\n"))
+max_x = int(input("Enter the upper limit for x:\n"))
+min_y = int(input("Enter the lower limit for y:\n"))
+max_y = int(input("Enter the upper limit for y:\n"))
+
