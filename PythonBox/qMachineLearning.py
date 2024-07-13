@@ -376,7 +376,7 @@ plt.savefig("uapiechart.png")
 plt.clf()
 
 # 4 correct
-'import pandas as pd
+import pandas as pd
 pd.set_option('display.max_columns', 100)
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -494,3 +494,11 @@ plt.savefig("uapiechart.png")
 plt.clf()
 
 
+# i assess
+
+# 1
+
+import numpy as np
+from scipy import stats
+
+number = int(input("Enter the number"))
