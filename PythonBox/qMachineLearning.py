@@ -533,5 +533,39 @@ else:
     print(f"Median: {median}")
     print(f"Standard Deviation: {std_dev:.4f}")
     print(f"Mode: {mode.mode[0]}")
-   
 
+
+# 2
+
+
+
+
+
+import numpy as np
+
+# Get the values of elements from the user
+actual_values = input("Enter actual values\n").split(",")
+predict_values = input("Enter predicted values\n").split(",")
+
+# Convert values to list of floats
+actual_value = [float(num) for num in actual_values]
+predict_value = [float(num) for num in predict_values]
+
+print("List of Actual Values")
+print(actual_value)
+
+print("List of Predicted Values")
+print(predict_value)
+
+# Convert lists to numpy arrays
+actual = np.array(actual_value)
+predict = np.array(predict_value)
+
+# Calculate Mean Squared Error (MSE)
+mse = np.mean((actual - predict) ** 2)
+
+# Round MSE to two decimal places
+rounded_mse = round(mse, 2)
+
+# Print rounded MSE
+print(f"MSE {rounded_mse}")
