@@ -18,3 +18,16 @@ cosine_value = cosdg(angle_deg)
     
 print(f"Sine of {angle_deg} degrees: {sine_value}")
 print(f"Cosine of {angle_deg} degrees: {cosine_value}")
+
+# 2
+
+import numpy as np
+from scipy.stats import linregress
+
+x_= input("Enter the values of x separated by spaces: ")
+y_ = input("Enter the values of y separated by spaces: ")
+
+x = np.array([float(number) for number in x_.split()])
+y = np.array([float(number) for number in y_.split()])
+
+slope, intercept, 
