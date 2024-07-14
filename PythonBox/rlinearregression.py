@@ -205,6 +205,17 @@ print(round(correlation_coef, 3))
 
 # 2
 
+import numpy as np
+
+input_user = input("").split(" ")
+
+list_number = []
+for num in input_user:
+    list_number.append(float(num))
+
+std_dev = np.std(list_number)
+
+print(round(std_dev, 2))
 
 
 
