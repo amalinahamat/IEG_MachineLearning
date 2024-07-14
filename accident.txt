@@ -1,1 +1,0 @@
-Car Detail | Description | Environment Condition | Date | Time | Status | Amount
