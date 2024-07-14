@@ -191,6 +191,22 @@ print(f"Scope = {round(m, 3)}")
 print(f"Intercept = {round(c, 3)}")
 
 
+# i Assess
+
+# 1
+
+covariance = float(input())
+variance_x = float(input())
+variance_y = float(input())
+
+correlation_coef = covariance / ((variance_x ** 0.5) * (variance_y ** 0.5))
+
+print(round(correlation_coef, 3))
+
+# 2
+
+
+
 
 
 
