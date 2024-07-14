@@ -95,6 +95,23 @@ print(f"Correlation Coefficient: {correlation_coef:.2f}")
 
 import numpy as np
 
+number = input("").split(" ")
+
+list_number = []
+for num in number:
+    list_number.append(int(num))
+
+mean = np.mean(list_number)
+
+print(mean)
+
+
+# 4
+
+# Your task is to create a Python program that calculates 
+# the correlation between two given arrays using the NumPy library.
+
+
 
 
 
