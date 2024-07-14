@@ -194,6 +194,20 @@ print(f"Intercept = {round(c, 3)}")
 # i Assess
 
 # 1
+# Find Correlation Cofficient
+# For a given covariance, variance of x and y, find the correlation cofficient(r).
+# Input Format:
+# First line of the input corresponds to the Covariance.
+# Second line of the input corresponds to the variance of x.
+# Third line of the input corresponds to the variance of y.
+# Output Format:
+# Output is an float value corresponds to the correlation cofficient(r).
+# Sample Input
+# -1.05
+# 250.25
+# 320.26
+# Sample Output
+# -0.004
 
 covariance = float(input())
 variance_x = float(input())
@@ -203,7 +217,19 @@ correlation_coef = covariance / ((variance_x ** 0.5) * (variance_y ** 0.5))
 
 print(round(correlation_coef, 3))
 
+
 # 2
+# Current Task:
+# In this problem, find the standard deviation of a given array.
+# Note: Use the NumPy Library for calculations.
+# Input Format:
+# The input is a single line containing space-separated integers.
+# Output Format:
+# The output is a single float value representing the standard deviation of the given array. Round it off to 2 decimal places using round method.
+# Sample Input:
+# 3 4 5 6
+# Sample Output:
+# 1.12
 
 import numpy as np
 
