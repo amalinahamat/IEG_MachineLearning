@@ -13,7 +13,7 @@
 # Sample Output:
 # 76.2
 
-import numpy as np
+'''import numpy as np
 
 input_user = input("").split(" ")
 
@@ -25,14 +25,16 @@ list2 = []
 for element2 in input_user[5:10]:
     list2.append(int(element2))
 
-covariance = np.cov(list1, list2)[0,1]
+covariance_matrix = np.cov(list1, list2, bias = True)
+
+covariance = covariance_matrix[0,1]
 
 print(covariance)
-
+'''
 
 # or correct answer of ebox
 
-import numpy as np
+'''import numpy as np
 
 # Read input for list 1
 first_element  = [int(input()) for element in range(5)]
@@ -44,7 +46,7 @@ second_element = [int(input()) for element in range(5)]
 covariance = np.cov([first_element, second_element])[0, 1]
 
 # Print covariance rounded to 1 decimal point
-print(format(covariance, ".1f"))
+print(format(covariance, ".1f"))'''
 
 # 2
 # Correlation coefficient - Scattered Data
@@ -62,7 +64,38 @@ print(format(covariance, ".1f"))
 # Sample Output 
 # Correlation Coefficient: 0.54
 
+import numpy as np
 number = int(input())
+
+x = []
+y = []
+
+for n in range(number):
+    num_x, num_y = input("").split(",")
+    x.append(float(num_x))
+    y.append(float(num_y))
+
+correlation_coef = np.corrcoef(x, y)[0, 1]
+
+print(f"Correlation Coefficient: {correlation_coef:.2f}")
+
+
+# 3
+
+# Write a Python program that calculates the mean of a given array using the NumPy library. 
+# This is a prerequisite step in the process of performing simple linear regression, 
+# which is a statistical approach for modeling the relationship between a dependent variable 
+# and a single independent variable.
+# Prerequisites for Simple Linear Regression:
+# Mean of the feature points.
+# Standard Deviation.
+# Correlation between X and Y.
+# In this problem, find the mean of a given array.
+# Note: Use the NumPy Library for calculations
+
+import numpy as np
+
+
 
 
 
