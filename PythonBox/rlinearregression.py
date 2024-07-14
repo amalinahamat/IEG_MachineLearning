@@ -110,6 +110,87 @@ print(mean)
 
 # Your task is to create a Python program that calculates 
 # the correlation between two given arrays using the NumPy library.
+# Hence, we try to find a linear function that predicts the response value (y) 
+# as accurately as possible as a function of the feature or independent variable (x).
+# Prerequisites for Simple Linear Regression:
+# Mean of the feature points.
+# Standard Deviation.
+# Correlation between X and Y.
+# Use the NumPy Library for calculations
+import numpy as np
+first_number = input("").split(" ")
+
+list_first = []
+for num in first_number:
+    list_first.append(int(num))
+
+second_number = input("").split(" ")
+list_second = []
+for num in second_number:
+    list_second.append(int(num))
+
+correlation_coef = np.corrcoef(list_first, list_second)[0, 1]
+
+print(round(correlation_coef, 2))
+
+
+# 5
+# Simple linear regression is an approach for predicting a response using a single feature.
+# It is assumed that the two variables are linearly related. Hence, we try to find a linear function that predicts 
+# the response value(y) as accurately as possible as a function of the feature or independent variable(x).
+# The following are the prerequisite values.
+# 1) Mean of the feature points.
+# 2) Standard Deviation.
+# 3) Correlation between X and Y.
+# y = bx + A -----------------> Line equation using slope.
+# where, b is the slope, and A is the intercept.
+# Now lets suppose,
+# MX - Mean of X
+# MY - Mean of Y
+# SX - Standard Deviation of X
+# SY - Standard Deviation of Y
+# r - Correlation between X and Y
+# Using these values we have to find the slope(b) and intercept(A).
+# The slope (b) can be calculated as follows:
+# b = r * SY/SX
+# and the intercept (A) can be calculated as
+# A = MY - b*MX
+import numpy as np
+
+x_number = input("").split(" ")
+y_number = input("").split(" ")
+
+list_x = []
+for x in x_number:
+    list_x.append(float(x))
+
+list_y = []
+for y in y_number:
+    list_y.append(float(y))
+
+x = np.array(list_x)
+y = np.array(list_y)
+
+mean_x = np.mean(x)
+mean_y = np.mean(y)
+
+std_x = np.std(x)
+std_y = np.std(y)
+
+correlation_coef = np.corrcoef(x,y)[0,1]
+
+m = correlation_coef * (std_y/std_x)
+c = mean_y - m * mean_x
+
+print(f"Mean of x = {mean_x}")
+print(f"Mean of y = {mean_y}")
+print(f"SD of x = {round(std_x, 3)}")
+print(f"SD of y = {round(std_y, 3)}")
+print(f"Correlation of x and y = {round(correlation_coef, 3)}")
+print(f"Scope = {round(m, 3)}")
+print(f"Intercept = {round(c, 3)}")
+
+
 
 
 
