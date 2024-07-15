@@ -108,6 +108,22 @@ Steps to Initialize the Centroids Using K-Means++
 '''
 # I Design
 # 1
+# K-Means Clustering for Classification Prediction
+# Write a Python program uses the K-Means clustering algorithm to predict the classification for a new case based on a given dataset.Dataset is provided as a part of template code, which specify classifications for nine combinations of VAR1 and VAR2.predict a classification for a case where VAR1=0.906 and VAR2=0.606, using the result of k- means clustering with 3 means (ie., 3 centroids) use random state as 0.
+# Dataset is given as a part of template code.
+# Steps: 
+# Imports necessary libraries, including pandas for data manipulation.
+# Read data from a CSV file named 'dataset.csv'.
+# Perform K-Means cluster with 3 centroids using KMeans from sklearn.cluster.
+# Fit the model to the data.
+# Get input  from the user. VAR1 and VAR2 are used to define the new case for which we want to predict the cluster.
+# Predicts the cluster for the new case using the predict method and print the predicted result. 
+# Sample Input and Output: 
+# Enter Var1: 
+# 0.0906
+# Enter Var2:
+# 0.606
+# Predicted Cluster for New Case: 0
 
 import pandas as pd
 from sklearn.cluster import KMeans
@@ -142,6 +158,29 @@ print(f"Predicted Cluster for New Case: {predicted_cluster}")
 
 # I Assess
 # 1
+# K-Means
+# Create a Python program to visualize the K-Means clustering algorithm on a set of data points in two-dimensional space.
+# Steps:
+# Prompt the user to enter the number of features (n) and the features themselves. Each feature should be entered in the format (x, y) and separated by commas.
+# Initialize the K-Means clustering algorithm by selecting every other data point as the initial centroids.
+# Use scikit-learn's KMeans implementation with 2 clusters to perform K-Means clustering on the input data.
+# Plot the original data points with different colors representing the clusters they belong to.
+# Plot the cluster centroids.
+# Save the resulting plot as 'kmeans_op.png'.
+# Sample Input and Output :
+# Enter the number of features
+# 10
+# Enter the features in comma separated format
+# 5,3
+# 10,15
+# 15,12
+# 24,10
+# 30,45
+# 85,70
+# 71,80
+# 60,78
+# 55,52
+# 80,91
 
 import numpy as np
 import matplotlib.pyplot as plt
