@@ -106,6 +106,9 @@ Steps to Initialize the Centroids Using K-Means++
 4. We then repeat steps 2 and 3 until k clusters have been chosen
 
 '''
+# I Design
+# 1
+
 import pandas as pd
 from sklearn.cluster import KMeans
 import warnings
@@ -136,6 +139,42 @@ predicted_cluster = kmeans.predict(new_case)[0]
 #Fill your code here
 print(f"Predicted Cluster for New Case: {predicted_cluster}")
 
+
+# I Assess
+# 1
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+number = int(input("Enter the number of features\n"))
+print("Enter the features in comma separated format")
+
+features = []
+for feature in range(number):
+    feature_num = input("").split(",")
+    features.append((float(feature_num[0]), float(feature_num[1])))
+
+feature_ = np.array(features)
+
+kmeans = KMeans(n_clusters = 2, init='k-means++', n_init=10)
+
+kmeans.fit(feature_)
+
+labels = kmeans.labels_
+centroids = kmeans.cluster_centers_
+
+plt.figure()
+
+plt.scatter(feature_[labels==0, 0], feature_[labels==0, 1], c='purple', marker='o', label='Cluster 1')
+plt.scatter(feature_[labels==1, 0], feature_[labels==1, 1], c='yellow', marker='o', label='Cluster 2')
+
+plt.scatter(centroids[:, 0], centroids[:,1], marker = "o", c = "blue", s = 200, label='Centroids')
+
+plt.savefig("kmeans_op.png")
+# plt.show()
+
+    
 
 
 
