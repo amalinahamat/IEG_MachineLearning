@@ -1,5 +1,0 @@
-PlatNo    | Customer  | StartRent  | EndRent 
-VDT 7458  |  De Gea   | 22/4/2012  | 26/4/2012
-ANP 0105  |  Ronaldo  | 17/3/2023  | 
-PKP 9903  |  Messi    |            |
-DCX 8085  |  Mbappe   |            |

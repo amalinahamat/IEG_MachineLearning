@@ -1,5 +1,0 @@
-PlatNo   | Model    | Name     | Color  | Status
-VDT 7458 | Nissan   | Serena   | peach  | inactive
-ANP 0105 | Toyota   | Vellfire | black  | active
-PKP 9903 | Mclauren | Spider   | yellow | active
-DCX 8085 | Honda    | CRV      | white  | inactive
