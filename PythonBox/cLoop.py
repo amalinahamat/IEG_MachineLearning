@@ -1,88 +1,6 @@
-# video
-'''
-n = 7
 
-for i in range(n):
-    for j in range(n):
-        if i == j or i + j == n - 1:
-            print("*", end=" ")
-        else:
-            print("#", end = " ")
-    print()
-
-True == False
-while True:
-    print(True)
-    break
-
-m = 2
-total = 0
-while(m < 6):
-    total = total + m
-    m = m + 1
-print(total)
-
-x = "abcd"
-for i in x:
-    print(i, end="")
-
-
-x = "abcd"
-for i in range(x): # str cannor be interpreted as integer
-    print(i)
-
-
-for i in range(0):
-    print(i)
-
-print()
-
-while True:
-    print(True)
-    break
-
-x = "abcd"
-for i in range(len(x)):
-    print(i)
-
-
-x = "abcdef"
-while i in range(x):
-    print x[:4] # Missing parentheses in call to 'print'
-'''
-'''
-i = 0
-while i < 5:
-    print(i)
-    i += 1
-    if i == 3:
-        break
-else:
-    print(0)
-
-i = 0
-while i < 3:
-    print(i)
-    i += 1
-else:
-    print(0)
-
-for i in range(5):
-    if i == 5:
-        break
-    else:
-        print(i, end="")
-else:
-    print("Here")
-
-for i in range(2):
-    print(i)
-for i in range(4,6):
-    print(i)
-
-'''
 #idesign
-'''
+
 # 1
 com_code = int(input())
 
@@ -105,12 +23,12 @@ for code in reg_code:
 
 print(count_even,count_odd, sep = " ")
 
-'''
+
 
 # 2
 
 # wrong... it is a prime number
-'''
+
 number = int(input())
 
 number_list = [2, 3, 5]
@@ -163,10 +81,10 @@ while prime_count < number:
         prime_count += 1
     num += 1
 
-    '''
+    
 
 # 3
-'''
+
 number = int(input())
 
 even = 30
@@ -191,8 +109,7 @@ for num in range(0, number):
 for list in list_number:
     print(list, end = " ")
 
-'''
-'''
+
 # 4
 
 numbers = (input("Enter a number of A, B and N separate by space: "))
@@ -220,9 +137,7 @@ for i in range(N):
 total_sum = A + B
 
 print(total_sum)
-    
-'''
-'''
+
 # 5
 N = int(input())
 
@@ -245,7 +160,7 @@ else:
 
     print(answer)
 
-'''
+
 #iassess
 a = int(input())
 b = int(input())
