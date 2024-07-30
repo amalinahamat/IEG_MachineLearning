@@ -1,3 +1,9 @@
+# GROUP ACCIDENT REPORT
+# PC MACHINE LEARNING COHORT 1
+# AMALINA BINTI HAMAT (LEADER)
+# NURSYUHADA BINTI ZAINAL ABIDIN
+# NUR AIDA NABILA BINTI KAHER NORDI
+
 from os.path import exists
 from datetime import datetime
 #import datetime
@@ -407,23 +413,6 @@ class AccidentReport:
         except Exception as e:
             print("Something went wrong when updating the report:", e)
 
-    """
-    # Filters damage claims based on their status (paid, unpaid, or all).
-    def filter_claims(self, lines, status_filter):
-        filtered_lines = []
-        for index, line in enumerate(lines):
-            if index == 0:
-                filtered_lines.append(line)
-            else:
-                car_details, amounts,date, status_damaged = line.strip().split(" | ")[0],line.strip().split(" | ")[3], line.strip().split(" | ")[6], line.strip().split(" | ")[5]
-                if status_filter == "p" and status_damaged.lower() == "paid":
-                    filtered_lines.append(line)
-                elif status_filter == "u" and status_damaged.lower() == "unpaid":
-                    filtered_lines.append(line)
-                elif status_filter == "o":
-                    filtered_lines.append(line)
-        return filtered_lines
-    """
 
     def filter_claims(self, lines, status_filter):
         filtered_lines = []

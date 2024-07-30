@@ -1,0 +1,10 @@
+Plate No | Description | Environmental Condition | Date | Time | Status | Amount
+VDT 7458 | Extreme | Slippery|Rain | 09/06/2023 | 16:45:00 | paid | 0.00
+GHJ 9012 | Light | Bumpy|Sunny | 12/12/2023 | 16:40:00 | unpaid | 3323.00
+DCX 8085 | Extreme | Slippery|Sunny | 20/08/2023 | 20:07:00 | paid | 0.00
+MNB 1235 | Extreme | Slippery|Sunny | 02/03/2024 | 03:15:00 | unpaid | 2500.00
+PKP 9903 | Light | Bumpy|Sunny | 05/07/2024 | 21:35:00 | unpaid | 3154.00
+VDT 7458 | Medium | Bumpy|Sunny | 01/02/2023 | 22:15:00 | paid | 0.00
+RTY 1122 | Medium | Slippery|Sunny | 05/06/2024 | 07:50:00 | paid | 0.00
+ANP 0105 | Extreme | Bumpy|Sunny | 03/07/2024 | 23:03:23 | unpaid | 9999.00
+WXY 1234 | Light | Bumpy|Sunny | 16/07/2024 | 13:45:00 | unpaid | 450.00
