@@ -1,0 +1,91 @@
+when use cmd
+
+opened xampp file, start the apache and mysql
+
+1. open xampp folder until the bin file -> C:\xampp\mysql\bin
+2. click at the directory and write cmd then enter to open cmd
+3. on cmd, write, mysql -u root -h localhost
+4. write use peneraju;
+5. show tables;
+6. desc products/population;
+7. SELECT * FROM products/peneraju;
+8. INSERT INTO products (id, name, description, quantity, price)
+    VALUES (_, _,_,_,_, _)
+
+
+
+
+
+
+
+# CREATE TABLE -> creates a new table.
+CREATE TABLE table_name (
+  column_name column_definition/datatype,
+  column_name column_definition/datatype,
+  ...
+);
+
+# INSERT INTO -> adds a new row to a table.
+INSERT INTO table_name
+VALUES (value1, value2, ...);
+
+OR
+
+INSERT INTO table_name
+VALUES
+  (value1, value2, ...),
+  (value1, value2, ...);
+
+# SELECT -> queries data from a table.
+SELECT column1, column2, ... columnN FROM table;
+
+OR
+
+SELECT * FROM table;
+
+# ALTER TABLE -> changes an existing table.
+ALTER TABLE students
+ADD exam_grade INT(3);
+
+OR
+
+ALTER TABLE students
+DROP COLUMN last_terms_grades;
+
+# UPDATE -> edits a row in a table.
+UPDATE table_name
+SET some_column = some_value
+WHERE some_column = some_value;
+
+OR
+
+UPDATE customers
+SET name = 'Code Ninja', city = 'Brooklyn'
+WHERE customer_id = 123;
+
+
+# DELETE FROM -> deletes rows from a table.
+DELETE FROM table WHERE condition;
+
+OR
+
+DELETE FROM students
+WHERE enrolled_status = 'not_current';
+
+OR
+
+DELETE FROM students; ## it will delete the entire table
+
+
+# Constraints ->  add information about how a column can be used.
+CREATE TABLE celebs (
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE,
+  grade INTEGER NOT NULL,
+  age INTEGER DEFAULT 10
+);
+
+id column is the PRIMARY KEY.
+name column is UNIQUE.
+grade column is NOT NULL.
+age column has a DEFAULT of 10.
